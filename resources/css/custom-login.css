@@ -1,0 +1,5 @@
+body {
+    background: 
+        url("{{ asset('assets/images/bg-custom.jpg') }}") center / cover, /* Gambar logo */
+        linear-gradient(0deg, rgba(var(--primary-900), 1) 0%, rgba(var(--primary-500)) 100%); /* Gradien */
+}
