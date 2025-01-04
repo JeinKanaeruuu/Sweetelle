@@ -68,6 +68,3 @@ Route::get('/product/{id}', [ProductController::class, 'show'])->name('product.d
 Route::get('/product', function () {
     return view('product');
 })->name('product');
-
-
-    })->name('product');
