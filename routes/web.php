@@ -70,4 +70,4 @@ Route::get('/product', function () {
 })->name('product');
 
 
-    })->name('product');
+   
