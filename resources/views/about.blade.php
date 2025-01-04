@@ -1,9 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-  <section id="hero" class="hero section">
-    <img src="assets/img/hero-1.png" alt="" data-aos="fade-in">
-  </section>  
+
 
   <!-- About Section -->
   <section id="blog-details" class="blog-details section">

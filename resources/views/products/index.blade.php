@@ -32,6 +32,9 @@
             <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-{{ strtolower(str_replace(' ', '-', $product->category)) }}">
               <div class="portfolio-content h-100">
                 <img src="{{ asset('storage/'.$product->image) }}" class="img-fluid" alt="{{ $product->name }}">
+                <div class="product-stock">
+                  <p><strong>Stok:</strong> {{ $product->stock > 0 ? $product->stock : 'Habis' }}</p>
+                </div>
                 <div class="portfolio-info">
                   <h4>{{ $product->name }}</h4>
                   <p>{{ $product->description }}</p>
@@ -39,6 +42,7 @@
                   <a href="{{ route('product.details', $product->id) }}" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
                 </div>
               </div>
+              
             </div><!-- End Portfolio Item -->
           @endforeach
         </div><!-- End Portfolio Container -->
