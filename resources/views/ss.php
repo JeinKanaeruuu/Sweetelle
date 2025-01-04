@@ -1,6 +1,10 @@
 @extends('layouts.app')
 
+<<<<<<< HEAD:resources/views/ss.php
 @section ('content')
+=======
+@section('content')
+>>>>>>> 8ef88b05ba6fc72468c4c25b7346346975e82468:resources/views/product.blade.php
   <!-- Portfolio Section -->
   <section id="portfolio" class="portfolio section">
 
