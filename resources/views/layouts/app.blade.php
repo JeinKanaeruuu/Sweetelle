@@ -41,7 +41,7 @@
   <header id="header" class="header d-flex align-items-center sticky-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center">
 
-      <a href="index.html" class="logo d-flex align-items-center me-auto">
+      <a href="{{ url('/#hero') }}" class="logo d-flex align-items-center me-auto">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="assets/img/logo.png" alt=""> -->
         <h1 class="sitename" style="font-family: 'railey'; font-size: 4rem;">Sweetelle</h1>
@@ -72,7 +72,7 @@
         <div class="container footer-top">
           <div class="row gy-4">
             <div class="col-lg-4 col-md-6 footer-about">
-              <a href="index.html" class="logo d-flex align-items-center">
+              <a href="{{ url('/#hero') }}" class="logo d-flex align-items-center">
                 <span class="sitename" style="font-family: 'railey'; color: #fcf9d6;">
                   Sweetelle</span>
               </a>
@@ -93,11 +93,11 @@
             <div class="col-lg-2 col-md-3 footer-links">
               <h4>Navigasi</h4>
               <ul>
-                <li><a href="index.html#hero">Home</a></li>
-                <li><a href="index.html#promo">Promo</a></li>
-                <li><a href="index.html#portfolio">Portfolio</a></li>
-                <li><a href="about.html">Tentang</a></li>
-                <li><a href="product.html">Produk</a></li>
+                <li><a href="{{ url('/#hero') }}">Home</a></li>
+                <li><a href="{{ url('/#promo') }}">Promo</a></li>
+                <li><a href="{{ url('/#portfolio') }}">Portfolio</a></li>
+                <li><a href="{{ route('about') }}">Tentang</a></li>
+                <li><a href="{{ route('product') }}">Produk</a></li>
               </ul>
             </div>
     
@@ -106,20 +106,20 @@
               <div class="row my-2">
                 <div class="col">
                   <ul>
-                    <li><a href="product.html">Kue Tumpeng</a></li>
-                    <li><a href="product.html">Kue Hantaran</a></li>
-                    <li><a href="product.html">Kue Tampah Bulat</a></li>
-                    <li><a href="product.html">Kue Nampan</a></li>
-                    <li><a href="product.html">Pudding</a></li>
+                    <li><a href="{{ route('product') }}">Kue Tumpeng</a></li>
+                    <li><a href="{{ route('product') }}">Kue Hantaran</a></li>
+                    <li><a href="{{ route('product') }}">Kue Tampah Bulat</a></li>
+                    <li><a href="{{ route('product') }}">Kue Nampan</a></li>
+                    <li><a href="{{ route('product') }}">Pudding</a></li>
                   </ul>
                 </div>
                 <div class="col">
                   <ul>
-                    <li><a href="product.html">Snack Box</a></li>
-                    <li><a href="product.html">Jajanan Pasar</a></li>
-                    <li><a href="product.html">Rujak Buah</a></li>
-                    <li><a href="product.html">Bubur</a></li>
-                    <li><a href="product.html">Cake</a></li>
+                    <li><a href="{{ route('product') }}">Snack Box</a></li>
+                    <li><a href="{{ route('product') }}">Jajanan Pasar</a></li>
+                    <li><a href="{{ route('product') }}">Rujak Buah</a></li>
+                    <li><a href="{{ route('product') }}">Bubur</a></li>
+                    <li><a href="{{ route('product') }}">Cake</a></li>
                   </ul>    
                 </div>
             </div>

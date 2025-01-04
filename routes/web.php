@@ -64,7 +64,10 @@ Route::get('/contact', function () {
 Route::get('/products', [ProductController::class, 'showProducts'])->name('products.index');
 Route::get('/product/{id}', [ProductController::class, 'show'])->name('product.details');
 
+
 Route::get('/product', function () {
     return view('product');
 })->name('product');
 
+
+    })->name('product');
