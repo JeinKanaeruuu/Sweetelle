@@ -19,7 +19,7 @@
               <h2 data-aos="fade-up" data-aos-delay="100">Aneka Kue Tradisional dan Modern untuk Momen Istimewa Anda</h2>
               <p data-aos="fade-up" data-aos-delay="200">Kue nampan, kue tampah, bubur madura, rujak buah, hingga snackbox. Sweetelle siap melengkapi setiap acara Anda dengan kelezatan istimewa..</p>
               <div class="d-flex mt-4" data-aos="fade-up" data-aos-delay="300">
-                <a href="product.html" id="plant-based">Eksplor Produk Kami
+                <a href="{{ route('product') }}" id="plant-based">Eksplor Produk Kami
                   <div class="icon-new">
                     <svg viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                       <rect width="500" height="500" fill="url(#pattern0_3_5)"/>
@@ -43,42 +43,49 @@
     <!-- /Hero Section -->
 
     <!-- Carousel Promo -->
-    <div id="carouselExampleIndicators" class="carousel slide">
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-        </div>
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-            <img src="{{ asset('assets/img/slider/mako.png') }}" class="d-block w-100" alt="promosi sweetelle">
-            </div>
-            <div class="carousel-item">
-            <img src="{{ asset('assets/img/slider/mako (1).png') }}" class="d-block w-100" alt="promosi sweetelle">
-            </div>
-            <div class="carousel-item">
-              @php
-              $landingPage = \App\Models\LandingPages::where('image_title', 'Landing')->first();
-              $imageUrl = $landingPage && $landingPage->image_url 
-                  ? $landingPage->image_url 
-                  : asset('assets/images/test.jpg');
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+      <!-- Carousel Indicators -->
+      <div class="carousel-indicators">
+          @php
+              $landingPages = \App\Models\LandingPages::where('image_title', 'promo')->get();
           @endphp
-  
-          <!-- Masukkan URL gambar ke dalam src tag -->
-          <img src="{{ $imageUrl }}" alt="Landing Page" data-aos="fade-in">
-            </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
+
+          @foreach ($landingPages as $index => $landingPage)
+              <button type="button" 
+                      data-bs-target="#carouselExampleIndicators" 
+                      data-bs-slide-to="{{ $index }}" 
+                      class="{{ $index === 0 ? 'active' : '' }}" 
+                      aria-current="{{ $index === 0 ? 'true' : 'false' }}" 
+                      aria-label="Slide {{ $index + 1 }}">
+              </button>
+          @endforeach
+      </div>
+      
+      <!-- Carousel Inner -->
+      <div class="carousel-inner">
+          @foreach ($landingPages as $index => $landingPage)
+              @php
+                  $imageUrl = $landingPage->image_url ?? asset('assets/images/test.jpg');
+              @endphp
+
+              <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
+                  <img src="{{ $imageUrl }}" alt="Promo {{ $index + 1 }}" class="d-block w-100" data-aos="fade-in">
+              </div>
+          @endforeach
+      </div>
+
+      <!-- Carousel Navigation -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+      </button>
     </div>
     <!-- /Carousel Promo -->
-    
+  
 
     <!-- About Section -->
     <section id="about" class="about section section-bg dark-background">
@@ -154,7 +161,7 @@
                     <h4 class="text-dark">Best Seller</h4>
                     <p>Tumpeng Kue</p>
                     <a href="assets/img/portfolio/tumpeng_kue.png" title="Tumpeng Kue" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                    <a href="product.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                    <a href="{{ route('product') }}" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
                   </div>
                 </div>
               </div><!-- End Portfolio Item -->
@@ -171,7 +178,7 @@
                     <h4 class="text-dark">2</h4>
                     <p>Kue Tampah Bulat</p>
                     <a href="assets/img/portfolio/kue_tampah_bulat.png" title="Kue Tampah Bulat" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                    <a href="product.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                    <a href="{{ route('product') }}" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
                   </div>
                 </div>
               </div><!-- End Portfolio Item -->
@@ -188,7 +195,7 @@
                     <h4 class="text-dark">Kue-kue</h4>
                     <p>Kue Hantaran</p>
                     <a href="assets/img/portfolio/kue_hantaran.png" title="Kue Hantaran Pernikahan" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                    <a href="product.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                    <a href="{{ route('product') }}" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
                   </div>
                 </div>
               </div><!-- End Portfolio Item -->
