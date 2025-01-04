@@ -10,6 +10,23 @@
     <div class="container mt-5">
         <h2>Riwayat Kasir</h2>
 
+        <!-- Form Filter Tanggal -->
+        <form action="{{ route('cashier.history') }}" method="GET" class="mb-4">
+            <div class="row">
+                <div class="col-md-4">
+                    <label for="start_date" class="form-label">Tanggal Mulai:</label>
+                    <input type="date" id="start_date" name="start_date" class="form-control" value="{{ request('start_date') }}">
+                </div>
+                <div class="col-md-4">
+                    <label for="end_date" class="form-label">Tanggal Akhir:</label>
+                    <input type="date" id="end_date" name="end_date" class="form-control" value="{{ request('end_date') }}">
+                </div>
+                <div class="col-md-4 d-flex align-items-end">
+                    <button type="submit" class="btn btn-success">Filter</button>
+                </div>
+            </div>
+        </form>
+
         <!-- Menampilkan Pendapatan Harian, Bulanan, dan Tahunan -->
         <div class="row mb-4">
             <div class="col-md-4">
@@ -42,6 +59,8 @@
             Kembali ke Halaman Kasir
         </a>
 
+
+
         @if($history->isEmpty())
             <p>Belum ada riwayat transaksi.</p>
         @else
@@ -62,7 +81,7 @@
                         <tr>
                             <td>{{ $index + 1 }}</td>
                             <td>{{ $item->user->name }}</td>
-                            <td>{{ $item->customer_name ?? 'Nama tidak tersedia' }}</td>  <!-- Menampilkan nama customer jika ada -->
+                            <td>{{ $item->customer_name ?? 'Nama tidak tersedia' }}</td>
                             <td>{{ $item->product_name }}</td>
                             <td>{{ $item->quantity }}</td>
                             <td>Rp {{ number_format($item->total_price, 0, ',', '.') }}</td>

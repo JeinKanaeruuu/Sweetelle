@@ -87,10 +87,23 @@ class CashierController extends Controller
         return response()->json(['success' => "Transaksi berhasil! Total: Rp $totalPrice"], 200);
     }
 
-    public function showHistory()
+    public function showHistory(Request $request)
     {
-        // Ambil data riwayat kasir yang sudah tersimpan
-        $history = CashierHistory::with('user')->orderBy('transaction_time', 'desc')->get();
+        $startDate = $request->query('start_date');
+        $endDate = $request->query('end_date');
+    
+        // Ambil data riwayat kasir dengan filter tanggal jika ada
+        $query = CashierHistory::with('user')->orderBy('transaction_time', 'desc');
+    
+        if ($startDate) {
+            $query->whereDate('transaction_time', '>=', $startDate);
+        }
+    
+        if ($endDate) {
+            $query->whereDate('transaction_time', '<=', $endDate);
+        }
+    
+        $history = $query->get();
     
         // Pendapatan Harian
         $dailyEarnings = CashierHistory::whereDate('transaction_time', today())->sum('total_price');
@@ -101,9 +114,10 @@ class CashierController extends Controller
         // Pendapatan Tahunan
         $yearlyEarnings = CashierHistory::whereYear('transaction_time', now()->year)->sum('total_price');
     
-        // Kirim data pendapatan dan riwayat kasir ke view
+        // Kirim data ke view
         return view('cashier.history', compact('history', 'dailyEarnings', 'monthlyEarnings', 'yearlyEarnings'));
     }
+    
     
     public function getEarnings(Request $request)
 {
@@ -119,5 +133,7 @@ class CashierController extends Controller
     // Kirim data pendapatan ke view
     return view('cashier.index', compact('dailyEarnings', 'monthlyEarnings', 'yearlyEarnings'));
 }
+
+
 
 }
