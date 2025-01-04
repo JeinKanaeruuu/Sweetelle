@@ -57,7 +57,15 @@
             <img src="{{ asset('assets/img/slider/mako (1).png') }}" class="d-block w-100" alt="promosi sweetelle">
             </div>
             <div class="carousel-item">
-            <img src="{{ asset('assets/img/slider/mako (2).png') }}" class="d-block w-100" alt="promosi sweetelle">
+              @php
+              $landingPage = \App\Models\LandingPages::where('image_title', 'Landing')->first();
+              $imageUrl = $landingPage && $landingPage->image_url 
+                  ? $landingPage->image_url 
+                  : asset('assets/images/test.jpg');
+          @endphp
+  
+          <!-- Masukkan URL gambar ke dalam src tag -->
+          <img src="{{ $imageUrl }}" alt="Landing Page" data-aos="fade-in">
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">

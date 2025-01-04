@@ -21,4 +21,24 @@ class ProductController extends Controller
     return view('admin.activity_logs', compact('logs'));
 }
     
+public function showProducts(Request $request)
+{
+    $sortBy = $request->input('sort_by', 'asc'); // Default 'asc' jika tidak ada input
+    
+    // Mengambil produk dan mengurutkannya berdasarkan harga
+    $products = Product::where('stock', '>', 0)
+                       ->orderBy('price', $sortBy) // Mengurutkan berdasarkan harga
+                       ->get();
+    
+    // Mengirim produk ke view
+    return view('products.index', compact('products'));
+}
+
+public function showPortfolio()
+{
+    $products = Product::all(); // Ambil semua produk dari database
+    return view('portfolio', compact('products'));
+}
+
+
 }

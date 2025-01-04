@@ -53,3 +53,14 @@ Route::get('/cashier', [CashierController::class, 'index'])->name('cashier.index
 Route::post('/cashier/checkout', [CashierController::class, 'checkout'])->name('cashier.checkout');
 Route::get('/products/search', [CashierController::class, 'search'])->name('products.search');
 Route::get('/cashier/history', [CashierController::class, 'showHistory'])->name('cashier.history');
+
+
+Route::get('/about', function () {
+    return view('about');
+})->name('about');
+Route::get('/contact', function () {
+    return view('contact');
+})->name('contact');
+
+Route::get('/products', [ProductController::class, 'showProducts'])->name('products.index');
+Route::get('/product/{id}', [ProductController::class, 'show'])->name('product.details');

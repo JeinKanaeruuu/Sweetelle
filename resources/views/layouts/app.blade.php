@@ -53,12 +53,12 @@
           <li><a href="{{ url('/#carouselExampleIndicators') }}">Promo</a></li>
           <li><a href="{{ url('/#portfolio') }}">Portfolio</a></li>
           <li><a href="{{ route('about') }}">Tentang</a></li>
-          <li><a href="{{ route('product') }}">Produk</a></li>          
+          <li><a href="{{ route('products.index') }}">Produk</a></li>          
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 
-      <a class="btn-getstarted" href="contact.html">Hubungi Kami</a>
+      <a class="btn-getstarted" href="{{ route('contact') }}">Hubungi Kami</a>
 
     </div>
   </header>
