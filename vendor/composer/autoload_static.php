@@ -500,8 +500,8 @@ class ComposerStaticInit7e8c3c14ff33b199b4a0838993eb8423
         ),
         'League\\Uri\\' => 
         array (
-            0 => __DIR__ . '/..' . '/league/uri-interfaces',
-            1 => __DIR__ . '/..' . '/league/uri',
+            0 => __DIR__ . '/..' . '/league/uri',
+            1 => __DIR__ . '/..' . '/league/uri-interfaces',
         ),
         'League\\OAuth1\\Client\\' => 
         array (
@@ -748,6 +748,10 @@ class ComposerStaticInit7e8c3c14ff33b199b4a0838993eb8423
         'AnourValar\\EloquentSerialize\\Package' => __DIR__ . '/..' . '/anourvalar/eloquent-serialize/src/Package.php',
         'AnourValar\\EloquentSerialize\\Service' => __DIR__ . '/..' . '/anourvalar/eloquent-serialize/src/Service.php',
         'App\\Filament\\Pages\\Dashboard' => __DIR__ . '/../..' . '/app/Filament/Pages/Dashboard.php',
+        'App\\Filament\\Resources\\CashierHistoryResource' => __DIR__ . '/../..' . '/app/Filament/Resources/CashierHistoryResource.php',
+        'App\\Filament\\Resources\\CashierHistoryResource\\Pages\\CreateCashierHistory' => __DIR__ . '/../..' . '/app/Filament/Resources/CashierHistoryResource/Pages/CreateCashierHistory.php',
+        'App\\Filament\\Resources\\CashierHistoryResource\\Pages\\EditCashierHistory' => __DIR__ . '/../..' . '/app/Filament/Resources/CashierHistoryResource/Pages/EditCashierHistory.php',
+        'App\\Filament\\Resources\\CashierHistoryResource\\Pages\\ListCashierHistories' => __DIR__ . '/../..' . '/app/Filament/Resources/CashierHistoryResource/Pages/ListCashierHistories.php',
         'App\\Filament\\Resources\\LandingPagesResource' => __DIR__ . '/../..' . '/app/Filament/Resources/LandingPagesResource.php',
         'App\\Filament\\Resources\\LandingPagesResource\\Pages\\CreateLandingPages' => __DIR__ . '/../..' . '/app/Filament/Resources/LandingPagesResource/Pages/CreateLandingPages.php',
         'App\\Filament\\Resources\\LandingPagesResource\\Pages\\EditLandingPages' => __DIR__ . '/../..' . '/app/Filament/Resources/LandingPagesResource/Pages/EditLandingPages.php',

@@ -1,354 +1,157 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UMKM Rambut Nenek Bpn</title>
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-    @livewireStyles
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <style>
-        html,
-        body {
-            height: 100%;
-            margin: 0;
-            font-family: 'Arial', sans-serif;
-            background-color: #f7f7f7;
-            position: relative; /* Added for positioning the circles */
-        }
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Index - Presento Bootstrap Template</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
 
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
-        body {
-            display: flex;
-            flex-direction: column;
-            z-index: 1; /* Ensure body content is above circles */
-        }
+  <!-- Vendor CSS Files -->
+  <link href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+  <link href="{{ asset('assets/vendor/aos/aos.css') }}" rel="stylesheet">
+  <link href="{{ asset('assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
 
-        main {
-            flex: 1;
-        }
+  <!-- Main CSS File -->
+  <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet">
 
-        /* Navbar */
-        header {
-            background-color: #8b0330; /* Soft pink */
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-        }
-
-        .navbar-brand {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #ffffff;
-        }
-
-        nav a {
-            color: #ffffff;
-            transition: all 0.3s;
-        }
-
-        nav a:hover {
-            color: #A5855F; /* Darker pink on hover */
-            transform: scale(1.1);
-        }
-
-        /* Active link color */
-        .active-link {
-            color: #A5855F; /* Active link color */
-            border-bottom: 2px solid #A5855F; /* Menambahkan border bawah */
-            padding-bottom: 4px; /* Menambahkan jarak antara teks dan garis bawah */
-            font-weight: bold; /* Membuat teks lebih tebal jika diinginkan */
-        }
-
-        /* Footer */
-        footer {
-            background-color: #8b0330;
-            color: #f1f1f1;
-            margin-top: 2rem;
-        }
-
-        footer h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        footer a {
-            color: #f1f1f1;
-            transition: all 0.3s;
-        }
-
-        footer a:hover {
-            color: #A5855F; /* Darker pink on hover */
-        }
-
-        /* Hamburger Menu */
-        .navbar-toggler {
-            display: none;
-        }
-
-        @media (max-width: 768px) {
-            .navbar-icons {
-                display: none;
-            }
-
-            .navbar-toggler {
-                display: block;
-                cursor: pointer;
-                color: #3b3b3b;
-                font-size: 1.5rem;
-            }
-
-            .navbar-menu {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 60px;
-                right: 0;
-                background-color: #f1c0e3; /* Soft pink */
-                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-                z-index: 10;
-            }
-
-            .navbar-menu.active {
-                display: flex;
-            }
-
-            nav a {
-                padding: 10px 20px;
-                border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-            }
-
-            nav a:last-child {
-                border-bottom: none;
-            }
-        }
-
-        form button {
-            color: #ffffff;
-            background-color: transparent;
-            border: none;
-            padding: 10px 20px;
-            transition: all 0.3s;
-        }
-
-        form button:hover {
-            color: #A5855F; /* Darker pink on hover */
-            transform: scale(1.1);
-        }
-    </style>
+  <!-- =======================================================
+  * Template Name: Presento
+  * Template URL: https://bootstrapmade.com/presento-bootstrap-corporate-template/
+  * Updated: Aug 07 2024 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
 </head>
 
-<body>
-    <!-- Circle Backgrounds -->
-    <div class="circle circle1"></div>
-    <div class="circle circle2"></div>
+<body class="index-page">
 
-    <!-- Navbar -->
-    <header class="shadow-md text-black relative">
-        <nav class="bg-white shadow-md">
-            <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-                <a href="#">
-                    @php
-                        $landingPage = \App\Models\LandingPages::where('image_title', 'Header')->first();
-                    @endphp
-                    @if($landingPage && $landingPage->image_url)
-                        <img src="{{ $landingPage->image_url }}" alt="Rambut Nenek BPN Logo" class="h-12">
-                    @else
-                        <!-- Optional fallback logo or text if image is not found -->
-                        <span class="text-2xl font-bold text-gray-800">Rambut Nenek BPN</span>
-                    @endif
-                </a>
-                <div class="hidden md:flex space-x-8">
-                    <a href="{{ route('home') }}" class="text-gray-600 hover:text-gray-800 transition duration-300 {{ request()->is('home') ? 'text-gray-800 font-semibold' : '' }}">
-                        <i class="fas fa-home mr-2"></i> Home
-                    </a>
-                    <a href="{{ route('home') }}#products" class="text-gray-600 hover:text-gray-800 transition duration-300 {{ request()->is('home') ? 'text-gray-800 font-semibold' : '' }}">
-                        <i class="fas fa-cookie-bite mr-2"></i> Produk
-                    </a>
-                    <a href="{{ route('about') }}" class="text-gray-600 hover:text-gray-800 transition duration-300 {{ request()->is('about') ? 'text-gray-800 font-semibold' : '' }}">
-                        <i class="fas fa-info-circle mr-2"></i> About Us
-                    </a>
-        
-                    @auth
-                        <a href="{{ route('cart.index') }}" class="text-gray-600 hover:text-gray-800 transition duration-300 {{ request()->is('cart') ? 'text-gray-800 font-semibold' : '' }}">
-                            <i class="fas fa-shopping-cart mr-2"></i> Keranjang Belanja
-                        </a>
-                        <a href="{{ route('transactions.index') }}" class="text-gray-600 hover:text-gray-800 transition duration-300 {{ request()->is('transactions') ? 'text-gray-800 font-semibold' : '' }}">
-                            <i class="fas fa-file-invoice-dollar mr-2"></i> Transaksi
-                        </a>
-                        <a href="{{ route('profile') }}" class="text-gray-600 hover:text-gray-800 transition duration-300 {{ request()->is('profile') ? 'text-gray-800 font-semibold' : '' }}">
-                            <i class="fas fa-user mr-2"></i> Profile
-                        </a>
-                    @else
-                        <a href="{{ route('customer.login') }}" class="text-gray-600 hover:text-gray-800 transition duration-300 {{ request()->is('customer/login') ? 'text-gray-800 font-semibold' : '' }}">
-                            <i class="fas fa-sign-in-alt mr-2"></i> Login
-                        </a>
-                    @endauth
-                </div>
-        
-                <div class="hidden md:flex space-x-4">
-                    @auth
-                        <form action="{{ route('customer.logout') }}" method="POST" class="inline">
-                            @csrf
-                            <button type="submit" class="text-gray-600 hover:text-gray-800 transition duration-300">
-                                <i class="fas fa-sign-out-alt"></i>
-                            </button>
-                        </form>
-                    @else
-                        <a href="https://www.instagram.com/rambutnenek_bpn/profilecard/?igsh=MTJ2ejA5a3owbmNycg==" class="text-gray-600 hover:text-gray-800 transition duration-300"><i class="fab fa-instagram"></i></a>
-                    @endauth
-                </div>
-        
-                <div class="md:hidden">
-                    <button id="menu-btn" class="text-gray-600 focus:outline-none">
-                        <i class="fas fa-bars"></i>
-                    </button>
-                </div>
-            </div>
-        
-            <div id="mobile-menu" class="hidden md:hidden">
-                <a href="{{ route('home') }}" class="block px-4 py-2 text-gray-600 hover:bg-gray-200">
-                    <i class="fas fa-home mr-2"></i> Home
-                </a>
-                <a href="{{ route('home') }}#products" class="block px-4 py-2 text-gray-600 hover:bg-gray-200">
-                    <i class="fas fa-cookie-bite mr-2"></i> Produk
-                </a>
-        
-                @auth
-                    <a href="{{ route('cart.index') }}" class="block px-4 py-2 text-gray-600 hover:bg-gray-200">
-                        <i class="fas fa-shopping-cart mr-2"></i> Keranjang Belanja
-                    </a>
-                    <a href="{{ route('transactions.index') }}" class="block px-4 py-2 text-gray-600 hover:bg-gray-200">
-                        <i class="fas fa-file-invoice-dollar mr-2"></i> Transaksi
-                    </a>
-                    <a href="{{ route('about') }}" class="block px-4 py-2 text-gray-600 hover:bg-gray-200">
-                        <i class="fas fa-info-circle mr-2"></i> About Us
-                    </a>
-                    <a href="{{ route('profile') }}" class="block px-4 py-2 text-gray-600 hover:bg-gray-200">
-                        <i class="fas fa-user mr-2"></i> Profile
-                    </a>
-                @else
-                    <a href="{{ route('customer.login') }}" class="block px-4 py-2 text-gray-600 hover:bg-gray-200">
-                        <i class="fas fa-sign-in-alt mr-2"></i> Login
-                    </a>
-                @endauth
-        
-                <div class="flex justify-center space-x-4 py-2">
-                    @auth
-                        <form action="{{ route('customer.logout') }}" method="POST" class="inline">
-                            @csrf
-                            <button type="submit" class="text-gray-600 hover:text-gray-800 transition duration-300">
-                                <i class="fas fa-sign-out-alt"></i>
-                            </button>
-                        </form>
-                    @else
-                        
-                        <a href="https://www.instagram.com/rambutnenek_bpn/profilecard/?igsh=MTJ2ejA5a3owbmNycg==" class="text-gray-600 hover:text-gray-800 transition duration-300"><i class="fab fa-instagram"></i></a>
-                        
-                    @endauth
-                </div>
-            </div>
-        </nav>
-        
-        <script>
-            document.getElementById('menu-btn').addEventListener('click', function() {
-                var menu = document.getElementById('mobile-menu');
-                if (menu.classList.contains('hidden')) {
-                    menu.classList.remove('hidden');
-                } else {
-                    menu.classList.add('hidden');
-                }
-            });
-        </script>
-        
-    </header>
+  <header id="header" class="header d-flex align-items-center sticky-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
 
-    <!-- Main Content -->
-    <main class="container mx-auto px-4 py-8 flex-1">
+      <a href="index.html" class="logo d-flex align-items-center me-auto">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <!-- <img src="assets/img/logo.png" alt=""> -->
+        <h1 class="sitename" style="font-family: 'railey'; font-size: 4rem;">Sweetelle</h1>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="{{ url('/#hero') }}" class="active">Home</a></li>
+          <li><a href="{{ url('/#carouselExampleIndicators') }}">Promo</a></li>
+          <li><a href="{{ url('/#portfolio') }}">Portfolio</a></li>
+          <li><a href="{{ route('about') }}">Tentang</a></li>
+          <li><a href="{{ route('product') }}">Produk</a></li>          
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+      <a class="btn-getstarted" href="contact.html">Hubungi Kami</a>
+
+    </div>
+  </header>
+
+    <main class="main">
         @yield('content')
     </main>
 
-<!-- Footer -->
-<footer class="bg-[#8b0330] text-white py-12">
-    <div class="container mx-auto px-4">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <!-- About Section -->
-            <div>
-                <h3 class="text-2xl font-bold mb-4">
-                    Rambut<span class="text-[#FFD700]"> Nenek BPN</span>
-                </h3>
-                <p class="text-sm mb-4">
-                    Rambut Nenek Balikpapan adalah cemilan tradisional yang melegenda. Dibuat dengan cinta, untuk menemani setiap momen manismu.
-                </p>
-                <div class="flex space-x-4 mt-4">
-                    <a href="https://www.instagram.com/rambutnenek_bpn/profilecard/?igsh=MTJ2ejA5a3owbmNycg==" class="hover:text-[#FFD700] transition duration-300">
-                        <i class="fab fa-instagram text-xl"></i>
-                    </a>
+    <footer id="footer" class="footer dark-background">
+
+        <div class="container footer-top">
+          <div class="row gy-4">
+            <div class="col-lg-4 col-md-6 footer-about">
+              <a href="index.html" class="logo d-flex align-items-center">
+                <span class="sitename" style="font-family: 'railey'; color: #fcf9d6;">
+                  Sweetelle</span>
+              </a>
+              <div class="footer-contact pt-3">
+                <p>Jl.Contoh RT.</p>
+                <p>Balikpapan, Kalimantan Timur 535022</p>
+                <p class="mt-3"><strong>Phone:</strong> <span>+62 811-4880-2508</span></p>
+                <p><strong>Email:</strong> <span>sweetelle@gmail.com</span></p>
+              </div>
+              <div class="social-links d-flex mt-4">
+                <a href=""><i class="bi bi-twitter-x"></i></a>
+                <a href=""><i class="bi bi-facebook"></i></a>
+                <a href=""><i class="bi bi-instagram"></i></a>
+                <a href=""><i class="bi bi-linkedin"></i></a>
+              </div>
+            </div>
+    
+            <div class="col-lg-2 col-md-3 footer-links">
+              <h4>Navigasi</h4>
+              <ul>
+                <li><a href="index.html#hero">Home</a></li>
+                <li><a href="index.html#promo">Promo</a></li>
+                <li><a href="index.html#portfolio">Portfolio</a></li>
+                <li><a href="about.html">Tentang</a></li>
+                <li><a href="product.html">Produk</a></li>
+              </ul>
+            </div>
+    
+            <div class="col-lg-4 col-md-3 footer-links">
+                <h4>Produk Kami</h4>
+              <div class="row my-2">
+                <div class="col">
+                  <ul>
+                    <li><a href="product.html">Kue Tumpeng</a></li>
+                    <li><a href="product.html">Kue Hantaran</a></li>
+                    <li><a href="product.html">Kue Tampah Bulat</a></li>
+                    <li><a href="product.html">Kue Nampan</a></li>
+                    <li><a href="product.html">Pudding</a></li>
+                  </ul>
+                </div>
+                <div class="col">
+                  <ul>
+                    <li><a href="product.html">Snack Box</a></li>
+                    <li><a href="product.html">Jajanan Pasar</a></li>
+                    <li><a href="product.html">Rujak Buah</a></li>
+                    <li><a href="product.html">Bubur</a></li>
+                    <li><a href="product.html">Cake</a></li>
+                  </ul>    
                 </div>
             </div>
-
-            <!-- Links Section -->
-            <div>
-                <h4 class="text-xl font-semibold mb-4">Navigasi</h4>
-                <ul class="space-y-2">
-                    <li>
-                        <a href="{{ route('home') }}" class="hover:text-[#FFD700] transition duration-300">
-                            Home
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('home') }}#products" class="hover:text-[#FFD700] transition duration-300">
-                            Produk
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('about') }}" class="hover:text-[#FFD700] transition duration-300">
-                            About Us
-                        </a>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- Contact Section -->
-            <div>
-                <h4 class="text-xl font-semibold mb-4">Hubungi Kami</h4>
-                <p class="text-sm">
-                    <i class="fas fa-map-marker-alt mr-2"></i> Balikpapan, Kalimantan Timur
-                </p>
-                <p class="text-sm mt-2">
-                    <i class="fas fa-phone-alt mr-2"></i> +6285787716285
-                </p>
-                <p class="text-sm mt-2">
-                    <i class="fas fa-envelope mr-2"></i> annisarahmadani97@gmail.com
-                </p>
-            </div>
+          </div>
         </div>
-
-        <!-- Bottom Bar -->
-        <div class="border-t border-gray-700 mt-8 pt-4 text-center text-sm">
-            <p>&copy; {{ date('Y') }} Rambut Nenek BPN. All Rights Reserved. Crafted with ❤️ in Balikpapan.</p>
+        
+        <div class="container copyright text-center mt-4">
+          <p>© <span>Copyright</span> <strong class="px-1 sitename" style="font-family: 'railey'; color: #fcf9d6;">Sweetelle</strong> <span>All Rights Reserved</span> {{ date('Y') }}</p>
+          <div class="credits">
+          </div>
         </div>
-    </div>
-</footer>
-
-
-
-    @livewireScripts
-    <script>
-        function toggleMenu() {
-            const menu = document.querySelector('.navbar-menu');
-            menu.classList.toggle('active');
-        }
-    </script>
-</body>
-
-</html>
+    
+      </footer>
+    
+      <!-- Scroll Top -->
+      <a href="https://wa.me/1234567890" target="_blank" class="whatsapp-fixed d-flex align-items-center justify-content-center" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Kontak WhatsApp Kami">
+        <i class="bi bi-whatsapp"></i></a>
+      <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    
+      <!-- Vendor JS Files -->
+      <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+      <script src="{{ asset('assets/vendor/php-email-form/validate.js') }}"></script>
+      <script src="{{ asset('assets/vendor/aos/aos.js') }}"></script>
+      <script src="{{ asset('assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
+      <script src="{{ asset('assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
+      <script src="{{ asset('assets/vendor/purecounter/purecounter_vanilla.js') }}"></script>
+      <script src="{{ asset('assets/vendor/imagesloaded/imagesloaded.pkgd.min.js') }}"></script>
+      <script src="{{ asset('assets/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
+    
+      <!-- Main JS File -->
+      <script src="{{ asset('assets/js/main.js') }}"></script>
+    
+    </body>
+    
+    </html>
