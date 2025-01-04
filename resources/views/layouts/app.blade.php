@@ -58,7 +58,7 @@
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 
-      <a class="btn-getstarted" href="contact.html">Hubungi Kami</a>
+      <a class="btn-getstarted" href="{{ route('contact') }}">Hubungi Kami</a>
 
     </div>
   </header>

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section
+@section('content')
   <!-- Portfolio Section -->
   <section id="portfolio" class="portfolio section">
 
