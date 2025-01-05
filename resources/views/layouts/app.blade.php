@@ -49,11 +49,11 @@
 
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="{{ url('/#hero') }}" class="active">Home</a></li>
-          <li><a href="{{ url('/#carouselExampleIndicators') }}">Promo</a></li>
-          <li><a href="{{ url('/#portfolio') }}">Portfolio</a></li>
-          <li><a href="{{ route('about') }}">Tentang</a></li>
-          <li><a href="{{ route('products.index') }}">Produk</a></li>          
+          <li><a href="{{ url('/#hero') }}" class="{{ Request::is('/') ? 'active' : '' }}">Home</a></li>
+          <li><a href="{{ url('/#carouselExampleIndicators') }}" class="{{ Request::is('*#carouselExampleIndicators*') ? 'active' : '' }}">Promo</a></li>
+          <li><a href="{{ url('/#portfolio') }}" class="{{ Request::is('*#portfolio*') ? 'active' : '' }}">Portfolio</a></li>
+          <li><a href="{{ route('about') }}" class="{{ Request::is('about') ? 'active' : '' }}">Tentang</a></li>
+          <li><a href="{{ route('products.index') }}" class="{{ Request::is('products*') ? 'active' : '' }}">Produk</a></li>          
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>

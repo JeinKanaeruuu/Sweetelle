@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/vue@3.3.4/dist/vue.global.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script> <!-- Menambahkan jsPDF -->
     <style>
         .product-image {
             width: 100%;
@@ -129,14 +128,7 @@
                                     <p class="card-text">Stok: @{{ product.stock }}</p>
                                     <div class="d-flex justify-content-between">
                                         <button class="btn btn-danger btn-icon" @click="decreaseQuantity(product)">-</button>
-                                        <input 
-                                            type="number" 
-                                            class="form-control w-50 text-center" 
-                                            :value="cart[product.id]?.quantity || 0" 
-                                            @input="updateQuantity(product, $event.target.value)"
-                                            min="0" 
-                                            :max="product.stock"
-                                        />
+                                        <span>@{{ cart[product.id]?.quantity || 0 }}</span>
                                         <button class="btn btn-success btn-icon" @click="increaseQuantity(product)">+</button>
                                     </div>
                                 </div>
@@ -210,6 +202,8 @@
                         this.cart[product.id] = { ...product, quantity: 1 };
                     } else if (this.cart[product.id].quantity < product.stock) {
                         this.cart[product.id].quantity++;
+                    } else {
+                        alert('Stok tidak mencukupi!');
                     }
                 },
                 decreaseQuantity(product) {
@@ -217,16 +211,6 @@
                         this.cart[product.id].quantity--;
                         if (this.cart[product.id].quantity === 0) {
                             delete this.cart[product.id];
-                        }
-                    }
-                },
-                updateQuantity(product, value) {
-                    const quantity = parseInt(value);
-                    if (quantity >= 0 && quantity <= product.stock) {
-                        if (!this.cart[product.id]) {
-                            this.cart[product.id] = { ...product, quantity };
-                        } else {
-                            this.cart[product.id].quantity = quantity;
                         }
                     }
                 },
@@ -255,34 +239,11 @@
                         if (data.success) {
                             alert('Checkout berhasil!');
                             this.cart = {}; // Reset keranjang
-                            this.generatePDF(); // Memanggil fungsi untuk menghasilkan PDF
                         } else if (data.error) {
                             alert(data.error);
                         }
                     })
                     .catch(error => console.error('Error:', error));
-                },
-                generatePDF() {
-                    const { jsPDF } = window.jspdf;
-                    const doc = new jsPDF();
-
-                    doc.setFontSize(18);
-                    doc.text('Struk Pembelian', 105, 10, { align: 'center' });
-
-                    if (this.customerName) {
-                        doc.setFontSize(12);
-                        doc.text(`Nama Customer: ${this.customerName}`, 20, 20);
-                    }
-
-                    let y = 30;
-                    doc.setFontSize(12);
-                    Object.values(this.cart).forEach((item, index) => {
-                        doc.text(`${item.name} (${item.quantity} x Rp ${item.price}) - Rp ${item.quantity * item.price}`, 20, y);
-                        y += 10;
-                    });
-
-                    doc.text(`Total: Rp ${this.totalPrice}`, 20, y + 10);
-                    doc.save('struk-pembelian.pdf');
                 }
             }
         });

@@ -54,58 +54,5 @@
     </div><!-- End Section Title -->
   </section>
 
-      <!-- About Section -->
-    <section id="about" class="about section section-bg dark-background">
-
-      <div class="container position-relative">
-
-        <div class="row gy-5">
-
-          <div class="content col-xl-5 d-flex flex-column" data-aos="fade-up" data-aos-delay="100">
-            <h3>Mengapa pilih<span style="font-family: 'railey'; color: #fcf9d6;">
-              Sweetelle</span> ?</h3>
-            <p>
-              Kami berpengalaman bertahun-tahun membantu menghadirkan pilihan kue yang menggoda selera, mulai dari kue nampan, kue tampah, bubur madura, rujak buah, hingga puding manis. Cocok untuk acara ulang tahun, hantaran istimewa, hingga snackbox praktis untuk berbagai momen. Sweetelle, karena setiap acara pantas dirayakan dengan rasa terbaik.
-            </p>
-            <a href="#" class="about-btn align-self-center align-self-xl-start"><span>Produk Kami</span> <i class="bi bi-chevron-right"></i></a>
-          </div>
-
-          <div class="col-xl-7" data-aos="fade-up" data-aos-delay="200">
-            <div class="row gy-4">
-
-              <div class="col-md-6 icon-box position-relative">
-                <i class="bi bi-basket-fill"></i>
-                <h4><a href="" class="stretched-link">Pilihan Beragam</a></h4>
-                <p>Aneka kue tradisional dan modern yang menggugah selera, siap melengkapi momen spesial Anda.</p>
-              </div><!-- Icon-Box -->
-
-              <div class="col-md-6 icon-box position-relative">
-                <i class="bi bi-award-fill"></i>
-                <h4><a href="" class="stretched-link">Kualitas Terbaik</a></h4>
-                <p>Dibuat dengan bahan segar dan berkualitas tinggi untuk kelezatan tanpa kompromi.</p>
-              </div><!-- Icon-Box -->
-
-              <div class="col-md-6 icon-box position-relative">
-                <i class="bi bi-gift-fill"></i>
-                <h4><a href="" class="stretched-link">Desain Elegan</a></h4>
-                <p>Penampilan yang cantik, cocok untuk hantaran, ulang tahun, dan acara spesial.</p>
-              </div><!-- Icon-Box -->
-
-              <div class="col-md-6 icon-box position-relative">
-                <i class="bi bi-emoji-smile-fill"></i>
-                <h4><a href="" class="stretched-link">Pelayanan Profesional</a></h4>
-                <p>Sweetelle berkomitmen memberikan layanan terbaik untuk kepuasan Anda.</p>
-              </div><!-- Icon-Box -->
-
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-    <!-- /About Section -->
-
 
 @endsection
