@@ -24,6 +24,31 @@
   font-style: normal; /* Opsi: normal, italic, oblique */
 }
 
+.text-with-line {
+  position: relative;
+  text-decoration: none;
+  display: inline-block; /* Agar teks tetap berada di tengah */
+}
+
+.text-with-line::before,
+.text-with-line::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 50px; /* Panjang garis di kiri dan kanan */
+  height: 1px; /* Ketebalan garis */
+  background-color: #496f16; /* Warna garis */
+  transform: translateY(-50%);
+}
+
+.text-with-line::before {
+  left: -60px; /* Jarak garis dari teks di sebelah kiri */
+}
+
+.text-with-line::after {
+  right: -60px; /* Jarak garis dari teks di sebelah kanan */
+}
+
 .photo-swiper .swiper-slide img {
   width: 100%;
   height: auto;
@@ -1406,6 +1431,20 @@ section,
   color: #fff;
   transition: 0.3s;
   line-height: 1.2;
+}
+
+.porto-link {
+  position: absolute;
+  left: 40%;
+  font-size: 26px;
+  top: calc(50% - 14px);
+  color: #fff;
+  transition: 0.3s;
+  line-height: 1.2;
+}
+
+.porto-link:hover {
+  color: var(--accent-color);
 }
 
 .portfolio .portfolio-content .portfolio-info .preview-link:hover,

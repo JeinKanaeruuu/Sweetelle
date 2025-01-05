@@ -94,10 +94,10 @@
               <h4>Navigasi</h4>
               <ul>
                 <li><a href="{{ url('/#hero') }}">Home</a></li>
+                <li><a href="{{ route('products.index') }}">Produk</a></li>
                 <li><a href="{{ url('/#promo') }}">Promo</a></li>
                 <li><a href="{{ url('/#portfolio') }}">Portfolio</a></li>
                 <li><a href="{{ route('about') }}">Tentang</a></li>
-                <li><a href="{{ route('product') }}">Produk</a></li>
               </ul>
             </div>
     
@@ -106,20 +106,20 @@
               <div class="row my-2">
                 <div class="col">
                   <ul>
-                    <li><a href="{{ route('product') }}">Kue Tumpeng</a></li>
-                    <li><a href="{{ route('product') }}">Kue Hantaran</a></li>
-                    <li><a href="{{ route('product') }}">Kue Tampah Bulat</a></li>
-                    <li><a href="{{ route('product') }}">Kue Nampan</a></li>
-                    <li><a href="{{ route('product') }}">Pudding</a></li>
+                    <li><a href="{{ route('products.index') }}">Kue Tumpeng</a></li>
+                    <li><a href="{{ route('products.index') }}">Kue Hantaran</a></li>
+                    <li><a href="{{ route('products.index') }}">Kue Tampah Bulat</a></li>
+                    <li><a href="{{ route('products.index') }}">Kue Nampan</a></li>
+                    <li><a href="{{ route('products.index') }}">Pudding</a></li>
                   </ul>
                 </div>
                 <div class="col">
                   <ul>
-                    <li><a href="{{ route('product') }}">Snack Box</a></li>
-                    <li><a href="{{ route('product') }}">Jajanan Pasar</a></li>
-                    <li><a href="{{ route('product') }}">Rujak Buah</a></li>
-                    <li><a href="{{ route('product') }}">Bubur</a></li>
-                    <li><a href="{{ route('product') }}">Cake</a></li>
+                    <li><a href="{{ route('products.index') }}">Snack Box</a></li>
+                    <li><a href="{{ route('products.index') }}">Jajanan Pasar</a></li>
+                    <li><a href="{{ route('products.index') }}">Rujak Buah</a></li>
+                    <li><a href="{{ route('products.index') }}">Bubur</a></li>
+                    <li><a href="{{ route('products.index') }}">Cake</a></li>
                   </ul>    
                 </div>
             </div>

@@ -128,7 +128,14 @@
                                     <p class="card-text">Stok: @{{ product.stock }}</p>
                                     <div class="d-flex justify-content-between">
                                         <button class="btn btn-danger btn-icon" @click="decreaseQuantity(product)">-</button>
-                                        <span>@{{ cart[product.id]?.quantity || 0 }}</span>
+                                        <input 
+                                            type="number" 
+                                            class="form-control w-50 text-center" 
+                                            :value="cart[product.id]?.quantity || 0" 
+                                            @input="updateQuantity(product, $event.target.value)"
+                                            min="0" 
+                                            :max="product.stock"
+                                        />
                                         <button class="btn btn-success btn-icon" @click="increaseQuantity(product)">+</button>
                                     </div>
                                 </div>
@@ -202,8 +209,6 @@
                         this.cart[product.id] = { ...product, quantity: 1 };
                     } else if (this.cart[product.id].quantity < product.stock) {
                         this.cart[product.id].quantity++;
-                    } else {
-                        alert('Stok tidak mencukupi!');
                     }
                 },
                 decreaseQuantity(product) {
@@ -211,6 +216,16 @@
                         this.cart[product.id].quantity--;
                         if (this.cart[product.id].quantity === 0) {
                             delete this.cart[product.id];
+                        }
+                    }
+                },
+                updateQuantity(product, value) {
+                    const quantity = parseInt(value);
+                    if (quantity >= 0 && quantity <= product.stock) {
+                        if (!this.cart[product.id]) {
+                            this.cart[product.id] = { ...product, quantity };
+                        } else {
+                            this.cart[product.id].quantity = quantity;
                         }
                     }
                 },

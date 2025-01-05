@@ -19,7 +19,7 @@
               <h2 data-aos="fade-up" data-aos-delay="100">Aneka Kue Tradisional dan Modern untuk Momen Istimewa Anda</h2>
               <p data-aos="fade-up" data-aos-delay="200">Kue nampan, kue tampah, bubur madura, rujak buah, hingga snackbox. Sweetelle siap melengkapi setiap acara Anda dengan kelezatan istimewa..</p>
               <div class="d-flex mt-4" data-aos="fade-up" data-aos-delay="300">
-                <a href="{{ route('product') }}" id="plant-based">Eksplor Produk Kami
+                <a href="{{ route('products.index') }}" id="plant-based">Eksplor Produk Kami
                   <div class="icon-new">
                     <svg viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                       <rect width="500" height="500" fill="url(#pattern0_3_5)"/>
@@ -87,58 +87,6 @@
     <!-- /Carousel Promo -->
   
 
-    <!-- About Section -->
-    <section id="about" class="about section section-bg dark-background">
-
-      <div class="container position-relative">
-
-        <div class="row gy-5">
-
-          <div class="content col-xl-5 d-flex flex-column" data-aos="fade-up" data-aos-delay="100">
-            <h3>Mengapa pilih<span style="font-family: 'railey'; color: #fcf9d6;">
-              Sweetelle</span> ?</h3>
-            <p>
-              Kami berpengalaman bertahun-tahun membantu menghadirkan pilihan kue yang menggoda selera, mulai dari kue nampan, kue tampah, bubur madura, rujak buah, hingga puding manis. Cocok untuk acara ulang tahun, hantaran istimewa, hingga snackbox praktis untuk berbagai momen. Sweetelle, karena setiap acara pantas dirayakan dengan rasa terbaik.
-            </p>
-            <a href="#" class="about-btn align-self-center align-self-xl-start"><span>Produk Kami</span> <i class="bi bi-chevron-right"></i></a>
-          </div>
-
-          <div class="col-xl-7" data-aos="fade-up" data-aos-delay="200">
-            <div class="row gy-4">
-
-              <div class="col-md-6 icon-box position-relative">
-                <i class="bi bi-basket-fill"></i>
-                <h4><a href="" class="stretched-link">Pilihan Beragam</a></h4>
-                <p>Aneka kue tradisional dan modern yang menggugah selera, siap melengkapi momen spesial Anda.</p>
-              </div><!-- Icon-Box -->
-
-              <div class="col-md-6 icon-box position-relative">
-                <i class="bi bi-award-fill"></i>
-                <h4><a href="" class="stretched-link">Kualitas Terbaik</a></h4>
-                <p>Dibuat dengan bahan segar dan berkualitas tinggi untuk kelezatan tanpa kompromi.</p>
-              </div><!-- Icon-Box -->
-
-              <div class="col-md-6 icon-box position-relative">
-                <i class="bi bi-gift-fill"></i>
-                <h4><a href="" class="stretched-link">Desain Elegan</a></h4>
-                <p>Penampilan yang cantik, cocok untuk hantaran, ulang tahun, dan acara spesial.</p>
-              </div><!-- Icon-Box -->
-
-              <div class="col-md-6 icon-box position-relative">
-                <i class="bi bi-emoji-smile-fill"></i>
-                <h4><a href="" class="stretched-link">Pelayanan Profesional</a></h4>
-                <p>Sweetelle berkomitmen memberikan layanan terbaik untuk kepuasan Anda.</p>
-              </div><!-- Icon-Box -->
-
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-    <!-- /About Section -->
 
         <!-- Portfolio Section -->
     <section id="portfolio" class="portfolio section">
@@ -149,8 +97,111 @@
         <p>Kumpulan Karya Ter-<span style="font-family: 'railey'; color: #496f16; font-size: 40px;">
           Sweet  </span>Kami untuk Berbagai Momen Istimewa Anda.</p>
       </div><!-- End Section Title -->
-
+      
       <div class="container">
+        <!-- Baris 1 -->
+        <div class="row mb-4">
+          <div class="col">
+            <div class="portfolio-item">
+              <div class="portfolio-content h-100">
+                <img src="assets/img/portfolio/tumpeng_kue.png" style="width: 100%; height: 500px; object-fit: cover;" alt="">
+                <div class="portfolio-info">
+                  <h4 class="text-dark">Best Seller</h4>
+                  <a href="{{ route('products.index') }}" title="More Details" class="porto-link"><span class="fs-1 fw-light">Kue Tumpeng</span><i class="bi bi-chevron-double-right"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+        <!-- Baris 2 -->
+        <div class="row mb-4">
+          <div class="col">
+            <div class="portfolio-item">
+              <div class="portfolio-content h-100">
+                <img src="assets/img/portfolio/kue_hantaran.png" style="width: 100%; height: 500px; object-fit: cover;" alt="">
+                <div class="portfolio-info">
+                  <a href="{{ route('products.index') }}" title="More Details" class="porto-link"><span class="fs-1 fw-light">Kue Hantaran</span><i class="bi bi-chevron-double-right"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+        <!-- Baris 3 -->
+        <div class="row mb-4">
+          <div class="col">
+            <div class="portfolio-item">
+              <div class="portfolio-content h-100">
+                <img src="assets/img/portfolio/kue_tampah_bulat.png" style="width: 100%; height: 500px; object-fit: cover;" alt="">
+                <div class="portfolio-info">
+                  <a href="{{ route('products.index') }}" title="More Details" class="porto-link"><span class="fs-1 fw-light">Kue Tampah Bulat</span><i class="bi bi-chevron-double-right"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+        <!-- Baris 4 -->
+        <div class="row mb-4">
+          <div class="col">
+            <div class="portfolio-item">
+              <div class="portfolio-content h-100">
+                <img src="assets/img/portfolio/kue-nampan.jpg" style="width: 100%; height: 500px; object-fit: cover;" alt="">
+                <div class="portfolio-info">
+                  <a href="{{ route('products.index') }}" title="More Details" class="porto-link"><span class="fs-1 fw-light">Kue Nampan</span><i class="bi bi-chevron-double-right"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+        <div class="row hidden-rows" style="display: none;">
+          <div class="col portfolio-item isotope-item filter-app">
+            <div class="portfolio-content h-100">
+              <img src="assets/img/portfolio/kue_tampah_bulat.png" style="width: 100%; height: 500px; object-fit: cover;" alt="">
+              <div class="portfolio-info">
+                <a href="{{ route('products.index') }}" title="More Details" class="porto-link">
+                  <span class="fs-1 fw-light">Kue Tampah Bulat</span>
+                  <i class="bi bi-chevron-double-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Tombol Show More dan Show Less -->
+        <div class="text-center mt-4">
+          <div class="text-center mt-4">
+            <a id="show-more-btn" href="javascript:void(0)" class="fs-2 fw-light text-with-line" style="color: #496f16">Show More</a>
+            <a id="show-less-btn" href="javascript:void(0)" class="text-secondary fs-2 fw-light text-with-line" style="display: none;">Show Less</a>
+          </div>        
+        </div>
+      </div>
+      
+      <script>
+        document.getElementById('show-more-btn').addEventListener('click', function () {
+          // Tampilkan elemen tersembunyi
+          const hiddenRows = document.querySelectorAll('.hidden-rows');
+          hiddenRows.forEach(row => {
+            row.style.display = 'flex';
+          });
+          // Sembunyikan tombol Show More dan tampilkan tombol Show Less
+          this.style.display = 'none';
+          document.getElementById('show-less-btn').style.display = 'inline-block';
+        });
+      
+        document.getElementById('show-less-btn').addEventListener('click', function () {
+          // Sembunyikan elemen yang sebelumnya ditampilkan
+          const hiddenRows = document.querySelectorAll('.hidden-rows');
+          hiddenRows.forEach(row => {
+            row.style.display = 'none';
+          });
+          // Tampilkan tombol Show More dan sembunyikan tombol Show Less
+          this.style.display = 'none';
+          document.getElementById('show-more-btn').style.display = 'inline-block';
+        });
+      </script>            
+      {{-- <div class="container">
         <div class="row mb-4">
           <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
             <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
@@ -159,50 +210,113 @@
                   <img src="assets/img/portfolio/tumpeng_kue.png" style="width: 100%; height: 500px; object-fit: cover;" alt="">
                   <div class="portfolio-info">
                     <h4 class="text-dark">Best Seller</h4>
-                    <p>Tumpeng Kue</p>
-                    <a href="assets/img/portfolio/tumpeng_kue.png" title="Tumpeng Kue" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                    <a href="{{ route('product') }}" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                    <a href="{{ route('products.index') }}" title="More Details" class="porto-link"><span class="fs-1 fw-light">Kue Tumpeng</span><i class="bi bi-chevron-double-right"></i></a>
                   </div>
                 </div>
               </div><!-- End Portfolio Item -->
             </div>
           </div>
         </div>
-        <div class="row py-4">
-          <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
-            <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
-              <div class="col portfolio-item isotope-item filter-app">
-                <div class="portfolio-content h-100">
-                  <img src="assets/img/portfolio/kue_tampah_bulat.png" style="width: 100%; height: 500px; object-fit: cover;" alt="">
-                  <div class="portfolio-info">
-                    <h4 class="text-dark">2</h4>
-                    <p>Kue Tampah Bulat</p>
-                    <a href="assets/img/portfolio/kue_tampah_bulat.png" title="Kue Tampah Bulat" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                    <a href="{{ route('product') }}" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                  </div>
-                </div>
-              </div><!-- End Portfolio Item -->
-            </div>
-          </div>
-        </div>
-        <div class="row py-4">
+        <div class="row mb-4">
           <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
             <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
               <div class="col portfolio-item isotope-item filter-app">
                 <div class="portfolio-content h-100">
                   <img src="assets/img/portfolio/kue_hantaran.png" style="width: 100%; height: 500px; object-fit: cover;" alt="">
                   <div class="portfolio-info">
-                    <h4 class="text-dark">Kue-kue</h4>
-                    <p>Kue Hantaran</p>
-                    <a href="assets/img/portfolio/kue_hantaran.png" title="Kue Hantaran Pernikahan" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                    <a href="{{ route('product') }}" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                    <a href="{{ route('products.index') }}" title="More Details" class="porto-link"><span class="fs-1 fw-light">Kue Hantaran</span><i class="bi bi-chevron-double-right"></i></a>
                   </div>
                 </div>
               </div><!-- End Portfolio Item -->
             </div>
           </div>
         </div>
-      </div>
+        <div class="row mb-4">
+          <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
+            <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
+              <div class="col portfolio-item isotope-item filter-app">
+                <div class="portfolio-content h-100">
+                  <img src="assets/img/portfolio/kue_tampah_bulat.png" style="width: 100%; height: 500px; object-fit: cover;" alt="">
+                  <div class="portfolio-info">
+                    <a href="{{ route('products.index') }}" title="More Details" class="porto-link"><span class="fs-1 fw-light">Kue Tampah Bulat</span><i class="bi bi-chevron-double-right"></i></a>
+                  </div>
+                </div>
+              </div><!-- End Portfolio Item -->
+            </div>
+          </div>
+        </div>
+        <div class="row mb-4">
+          <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
+            <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
+              <div class="col portfolio-item isotope-item filter-app">
+                <div class="portfolio-content h-100">
+                  <img src="assets/img/portfolio/kue-nampan.jpg" style="width: 100%; height: 500px; object-fit: cover;" alt="">
+                  <div class="portfolio-info">
+                    <a href="{{ route('products.index') }}" title="More Details" class="porto-link"><span class="fs-1 fw-light">Kue Nampan</span><i class="bi bi-chevron-double-right"></i></a>
+                  </div>
+                </div>
+              </div><!-- End Portfolio Item -->
+            </div>
+          </div>
+        </div>
+        <div class="row mb-4">
+          <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
+            <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
+              <div class="col portfolio-item isotope-item filter-app">
+                <div class="portfolio-content h-100">
+                  <img src="assets/img/portfolio/tumpeng_kue.png" style="width: 100%; height: 500px; object-fit: cover;" alt="">
+                  <div class="portfolio-info">
+                    <h4 class="text-dark">Best Seller</h4>
+                    <a href="{{ route('products.index') }}" title="More Details" class="porto-link"><span class="fs-1 fw-light">Kue Tumpeng</span><i class="bi bi-chevron-double-right"></i></a>
+                  </div>
+                </div>
+              </div><!-- End Portfolio Item -->
+            </div>
+          </div>
+        </div>
+        <div class="row mb-4">
+          <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
+            <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
+              <div class="col portfolio-item isotope-item filter-app">
+                <div class="portfolio-content h-100">
+                  <img src="assets/img/portfolio/kue_hantaran.png" style="width: 100%; height: 500px; object-fit: cover;" alt="">
+                  <div class="portfolio-info">
+                    <a href="{{ route('products.index') }}" title="More Details" class="porto-link"><span class="fs-1 fw-light">Kue Hantaran</span><i class="bi bi-chevron-double-right"></i></a>
+                  </div>
+                </div>
+              </div><!-- End Portfolio Item -->
+            </div>
+          </div>
+        </div>
+        <div class="row mb-4">
+          <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
+            <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
+              <div class="col portfolio-item isotope-item filter-app">
+                <div class="portfolio-content h-100">
+                  <img src="assets/img/portfolio/kue_tampah_bulat.png" style="width: 100%; height: 500px; object-fit: cover;" alt="">
+                  <div class="portfolio-info">
+                    <a href="{{ route('products.index') }}" title="More Details" class="porto-link"><span class="fs-1 fw-light">Kue Tampah Bulat</span><i class="bi bi-chevron-double-right"></i></a>
+                  </div>
+                </div>
+              </div><!-- End Portfolio Item -->
+            </div>
+          </div>
+        </div>
+        <div class="row mb-4">
+          <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
+            <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
+              <div class="col portfolio-item isotope-item filter-app">
+                <div class="portfolio-content h-100">
+                  <img src="assets/img/portfolio/kue-nampan.jpg" style="width: 100%; height: 500px; object-fit: cover;" alt="">
+                  <div class="portfolio-info">
+                    <a href="{{ route('products.index') }}" title="More Details" class="porto-link"><span class="fs-1 fw-light">Kue Nampan</span><i class="bi bi-chevron-double-right"></i></a>
+                  </div>
+                </div>
+              </div><!-- End Portfolio Item -->
+            </div>
+          </div>
+        </div>
+      </div> --}}
 
     </section>
     <!-- /Portfolio Section -->
