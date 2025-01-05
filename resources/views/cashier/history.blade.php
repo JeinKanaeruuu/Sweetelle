@@ -123,13 +123,11 @@
             <div class="row">
                 <div class="col-md-4">
                     <label for="start_date" class="form-label">Tanggal Mulai</label>
-                    <input type="date" id="start_date" name="start_date" class="form-control"
-                        value="{{ request('start_date') }}">
+                    <input type="date" id="start_date" name="start_date" class="form-control" value="{{ request('start_date') }}">
                 </div>
                 <div class="col-md-4">
                     <label for="end_date" class="form-label">Tanggal Akhir</label>
-                    <input type="date" id="end_date" name="end_date" class="form-control"
-                        value="{{ request('end_date') }}">
+                    <input type="date" id="end_date" name="end_date" class="form-control" value="{{ request('end_date') }}">
                 </div>
                 <div class="col-md-4 d-flex align-items-end">
                     <button type="submit" class="btn btn-primary-custom w-100">Filter</button>
@@ -137,7 +135,7 @@
             </div>
         </form>
 
-        <!-- Menampilkan Pendapatan Harian, Bulanan, dan Tahunan -->
+        <!-- Menampilkan Pendapatan -->
         <div class="row mb-4">
             <div class="col-md-4 mb-4">
                 <div class="card">
@@ -165,7 +163,74 @@
             </div>
         </div>
 
+        <!-- Produk Terbanyak dan Terdikit -->
+        <div class="row mb-4">
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Produk Terjual Terbanyak Hari Ini</h5>
+                        <p class="card-text">{{ $topProductDaily ? $topProductDaily->product_name : 'Tidak ada data' }}</p>
+                        <p>Quantity: {{ $topProductDaily ? $topProductDaily->total_quantity : 0 }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Produk Terjual Terbanyak Bulan Ini</h5>
+                        <p class="card-text">{{ $topProductMonthly ? $topProductMonthly->product_name : 'Tidak ada data' }}</p>
+                        <p>Quantity: {{ $topProductMonthly ? $topProductMonthly->total_quantity : 0 }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Produk Terjual Terbanyak Tahun Ini</h5>
+                        <p class="card-text">{{ $topProductYearly ? $topProductYearly->product_name : 'Tidak ada data' }}</p>
+                        <p>Quantity: {{ $topProductYearly ? $topProductYearly->total_quantity : 0 }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Produk Terjual Terdikit untuk Hari Ini</h5>
+                        <p class="card-text">{{ $leastProductDaily ? $leastProductDaily->product_name : 'Tidak ada data' }}</p>
+                        <p>Quantity: {{ $leastProductDaily ? $leastProductDaily->total_quantity : 0 }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Produk Terjual Terdikit Bulan Ini</h5>
+                        <p class="card-text">{{ $leastProductMonthly ? $leastProductMonthly->product_name : 'Tidak ada data' }}</p>
+                        <p>Quantity: {{ $leastProductMonthly ? $leastProductMonthly->total_quantity : 0 }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Produk Terjual Terdikit Tahun Ini</h5>
+                        <p class="card-text">{{ $leastProductYearly ? $leastProductYearly->product_name : 'Tidak ada data' }}</p>
+                        <p>Quantity: {{ $leastProductYearly ? $leastProductYearly->total_quantity : 0 }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        
+
         <a href="{{ route('cashier.index') }}" class="btn btn-primary-custom mb-4">Kembali ke Halaman Kasir</a>
+        <a href="{{ route('cashier.sales_report') }}" class="btn btn-primary-custom mb-4">Laporan Penjualan</a>
+        <a href="{{ route('sales_report_category') }}" class="btn btn-primary-custom mb-4">Laporan Penjualan per Kategori</a>
+
+
+        
+
 
         @if($history->isEmpty())
             <p class="text-center text-muted">Belum ada riwayat transaksi.</p>

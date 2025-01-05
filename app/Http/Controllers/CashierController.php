@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Product;
-use App\Models\CashierHistory; // Import model CashierHistory
+use App\Models\CashierHistory; // Import model CashierHistory'
+use Illuminate\Support\Facades\DB;
 
 class CashierController extends Controller
 {
@@ -92,7 +93,7 @@ class CashierController extends Controller
         $startDate = $request->query('start_date');
         $endDate = $request->query('end_date');
     
-        // Ambil data riwayat kasir dengan filter tanggal jika ada
+        // Query riwayat kasir
         $query = CashierHistory::with('user')->orderBy('transaction_time', 'desc');
     
         if ($startDate) {
@@ -105,18 +106,78 @@ class CashierController extends Controller
     
         $history = $query->get();
     
-        // Pendapatan Harian
+        // Pendapatan
         $dailyEarnings = CashierHistory::whereDate('transaction_time', today())->sum('total_price');
-    
-        // Pendapatan Bulanan
         $monthlyEarnings = CashierHistory::whereMonth('transaction_time', now()->month)->sum('total_price');
-    
-        // Pendapatan Tahunan
         $yearlyEarnings = CashierHistory::whereYear('transaction_time', now()->year)->sum('total_price');
     
-        // Kirim data ke view
-        return view('cashier.history', compact('history', 'dailyEarnings', 'monthlyEarnings', 'yearlyEarnings'));
+        // Produk terjual terbanyak
+        $topProductDaily = CashierHistory::selectRaw('product_name, SUM(quantity) as total_quantity')
+            ->whereDate('transaction_time', today())
+            ->groupBy('product_name')
+            ->orderByDesc('total_quantity')
+            ->first();
+    
+        $topProductMonthly = CashierHistory::selectRaw('product_name, SUM(quantity) as total_quantity')
+            ->whereMonth('transaction_time', now()->month)
+            ->groupBy('product_name')
+            ->orderByDesc('total_quantity')
+            ->first();
+    
+        $topProductYearly = CashierHistory::selectRaw('product_name, SUM(quantity) as total_quantity')
+            ->whereYear('transaction_time', now()->year)
+            ->groupBy('product_name')
+            ->orderByDesc('total_quantity')
+            ->first();
+    
+    // Produk terjual terdikit harian
+    $leastProductDaily = DB::table('products')
+        ->leftJoin('cashier_histories', function ($join) {
+            $join->on('products.name', '=', 'cashier_histories.product_name')
+                ->whereDate('cashier_histories.transaction_time', today());
+        })
+        ->select('products.name as product_name', DB::raw('COALESCE(SUM(cashier_histories.quantity), 0) as total_quantity'))
+        ->groupBy('products.name')
+        ->orderBy('total_quantity', 'asc')
+        ->first();
+
+    // Produk terjual terdikit bulanan
+    $leastProductMonthly = DB::table('products')
+        ->leftJoin('cashier_histories', function ($join) {
+            $join->on('products.name', '=', 'cashier_histories.product_name')
+                ->whereMonth('cashier_histories.transaction_time', now()->month);
+        })
+        ->select('products.name as product_name', DB::raw('COALESCE(SUM(cashier_histories.quantity), 0) as total_quantity'))
+        ->groupBy('products.name')
+        ->orderBy('total_quantity', 'asc')
+        ->first();
+
+    // Produk terjual terdikit tahunan
+    $leastProductYearly = DB::table('products')
+        ->leftJoin('cashier_histories', function ($join) {
+            $join->on('products.name', '=', 'cashier_histories.product_name')
+                ->whereYear('cashier_histories.transaction_time', now()->year);
+        })
+        ->select('products.name as product_name', DB::raw('COALESCE(SUM(cashier_histories.quantity), 0) as total_quantity'))
+        ->groupBy('products.name')
+        ->orderBy('total_quantity', 'asc')
+        ->first();
+
+    // Kirim data ke view
+    return view('cashier.history', compact(
+        'history',
+        'dailyEarnings',
+        'monthlyEarnings',
+        'yearlyEarnings',
+        'topProductDaily',
+        'topProductMonthly',
+        'topProductYearly',
+        'leastProductDaily',
+        'leastProductMonthly',
+        'leastProductYearly'
+    ));
     }
+    
     
     
     public function getEarnings(Request $request)
@@ -133,6 +194,7 @@ class CashierController extends Controller
     // Kirim data pendapatan ke view
     return view('cashier.index', compact('dailyEarnings', 'monthlyEarnings', 'yearlyEarnings'));
 }
+
 
 
 

@@ -36,9 +36,21 @@ public static function form(Form $form): Form
             Forms\Components\TextInput::make('name')
                 ->required()
                 ->maxLength(255),
-            Forms\Components\TextInput::make('category')
-                ->required()
-                ->maxLength(255),
+                Forms\Components\Select::make('category')
+                    
+                    ->options([
+                        'kue-traditional' => 'Kue Traditional',
+                        'kue-gurih' => 'Kue Gurih',
+                        'kue-modern' => 'Kue Modern',
+                        'snack-box' => 'Snack Box',
+                        'kue-nampan' => 'Kue Nampan',
+                        'kue-tampah' => 'Kue Tampah',
+                        'jajan-pasar' => 'Jajan Pasar',
+                        'rujak' => 'Rujak Buah dan Rebusan',
+                        'bubur' => 'Bubur Manis Traditional',
+                        'tumpeng-tower' => 'Tumpeng Tower',
+                    ])
+                    ->required(),
             Forms\Components\FileUpload::make('image')
                 ->required()
                 ->image()
@@ -72,9 +84,22 @@ public static function form(Form $form): Form
                 Tables\Columns\TextColumn::make('name')
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('category')
+                    Tables\Columns\TextColumn::make('category')
                     ->searchable()
-                    ->sortable(),
+                    ->sortable()
+                    ->formatStateUsing(fn($state) => match ($state) {
+                        'kue-traditional' => 'Kue Traditional',
+                        'kue-gurih' => 'Kue Gurih',
+                        'kue-modern' => 'Kue Modern',
+                        'snack-box' => 'Snack Box',
+                        'kue-nampan' => 'Kue Nampan',
+                        'kue-tampah' => 'Kue Tampah',
+                        'jajan-pasar' => 'Jajan Pasar',
+                        'rujak' => 'Rujak Buah dan Rebusan',
+                        'bubur' => 'Bubur Manis Traditional',
+                        'tumpeng-tower' => 'Tumpeng Tower',
+                        default => Str::title(str_replace('-', ' ', $state)), // Default case
+                    }),
                     Tables\Columns\ImageColumn::make('image')
                     ->height(50),
                     Tables\Columns\TextColumn::make('price')

@@ -14,6 +14,7 @@ use App\Http\Livewire\ListRevenues;
 use App\Http\Controllers\RevenueController; 
 use App\Http\Controllers\ProductController; 
 use App\Http\Controllers\CashierController;
+use App\Http\Controllers\SalesReportController;
 
 
 Route::get('/customer/login', [CustomerAuthController::class, 'showLoginForm'])->name('customer.login');
@@ -69,5 +70,7 @@ Route::get('/product', function () {
     return view('product');
 })->name('product');
 
+Route::get('/cashier/product-stats', [CashierController::class, 'showProductStats'])->name('cashier.product-stats');
 
-   
+Route::get('/sales-report', [SalesReportController::class, 'showDetailedSalesReport'])->name('cashier.sales_report');
+Route::get('/sales-report/category', [SalesReportController::class, 'showSalesReportByCategory'])->name('sales_report_category');
