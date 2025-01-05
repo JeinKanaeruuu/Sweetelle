@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/vue@3.3.4/dist/vue.global.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script> <!-- Menambahkan jsPDF -->
     <style>
         .product-image {
             width: 100%;
@@ -254,11 +255,34 @@
                         if (data.success) {
                             alert('Checkout berhasil!');
                             this.cart = {}; // Reset keranjang
+                            this.generatePDF(); // Memanggil fungsi untuk menghasilkan PDF
                         } else if (data.error) {
                             alert(data.error);
                         }
                     })
                     .catch(error => console.error('Error:', error));
+                },
+                generatePDF() {
+                    const { jsPDF } = window.jspdf;
+                    const doc = new jsPDF();
+
+                    doc.setFontSize(18);
+                    doc.text('Struk Pembelian', 105, 10, { align: 'center' });
+
+                    if (this.customerName) {
+                        doc.setFontSize(12);
+                        doc.text(`Nama Customer: ${this.customerName}`, 20, 20);
+                    }
+
+                    let y = 30;
+                    doc.setFontSize(12);
+                    Object.values(this.cart).forEach((item, index) => {
+                        doc.text(`${item.name} (${item.quantity} x Rp ${item.price}) - Rp ${item.quantity * item.price}`, 20, y);
+                        y += 10;
+                    });
+
+                    doc.text(`Total: Rp ${this.totalPrice}`, 20, y + 10);
+                    doc.save('struk-pembelian.pdf');
                 }
             }
         });

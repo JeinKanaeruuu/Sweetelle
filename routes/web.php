@@ -54,6 +54,7 @@ Route::get('/cashier', [CashierController::class, 'index'])->name('cashier.index
 Route::post('/cashier/checkout', [CashierController::class, 'checkout'])->name('cashier.checkout');
 Route::get('/products/search', [CashierController::class, 'search'])->name('products.search');
 Route::get('/cashier/history', [CashierController::class, 'showHistory'])->name('cashier.history');
+Route::post('/cashier/checkout', [CashierController::class, 'checkout'])->name('cashier.checkout');
 
 Route::get('/about', function () {
     return view('about');

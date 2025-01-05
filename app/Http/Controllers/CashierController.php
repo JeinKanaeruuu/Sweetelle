@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\CashierHistory; // Import model CashierHistory'
 use Illuminate\Support\Facades\DB;
+use Dompdf\Dompdf;
+use Dompdf\Options;
+
 
 class CashierController extends Controller
 {
@@ -30,64 +33,28 @@ class CashierController extends Controller
 
     public function checkout(Request $request)
     {
-        $cart = $request->input('cart');
-        $customerName = $request->input('customer_name'); // Ambil nama customer dari request
-
-        if (!$cart || !is_array($cart)) {
-            return response()->json(['error' => 'Keranjang kosong atau data tidak valid.'], 400);
-        }
-
-        $errors = [];
-        $totalPrice = 0;
-        $productNames = [];  // Array untuk menyimpan nama produk
-        $transactionTime = now();  // Waktu transaksi
-
-        // Loop untuk memproses item di keranjang
-        foreach ($cart as $item) {
-            $product = Product::find($item['id']);
-
-            if (!$product) {
-                $errors[] = "Produk dengan ID {$item['id']} tidak ditemukan.";
-                continue;
-            }
-
-            if ($product->stock < $item['quantity']) {
-                $errors[] = "Stok untuk produk '{$product->name}' tidak mencukupi.";
-                continue;
-            }
-
-            // Menambahkan nama produk ke dalam array
-            $productNames[] = $product->name;
-
-            // Hitung total harga
-            $totalPrice += $product->price * $item['quantity'];
-            
-            // Kurangi stok produk
-            $product->stock -= $item['quantity'];
-            $product->save();
-        }
-
-        // Jika ada error
-        if (!empty($errors)) {
-            return response()->json(['error' => implode('<br>', $errors)], 400);
-        }
-
-        // Gabungkan nama produk yang dibeli menjadi satu string
-        $productNamesString = implode(', ', $productNames);
-
-        // Simpan riwayat kasir
-        CashierHistory::create([
-            'user_id' => Auth::id(),  // ID kasir yang melakukan transaksi
-            'customer_name' => $customerName,  // Simpan nama customer yang opsional
-            'product_name' => $productNamesString,  // Nama produk yang dibeli, digabungkan
-            'quantity' => count($cart),  // Jumlah item yang dibeli
-            'total_price' => $totalPrice,  // Total harga transaksi
-            'transaction_time' => $transactionTime,  // Waktu transaksi
+        $data = $request->validate([
+            'cart' => 'required|array',
+            'cart.*.id' => 'required|exists:products,id',
+            'cart.*.quantity' => 'required|integer|min:1',
+            'customer_name' => 'nullable|string|max:255',
         ]);
 
-        return response()->json(['success' => "Transaksi berhasil! Total: Rp $totalPrice"], 200);
-    }
+        // Proses checkout
+        foreach ($data['cart'] as $item) {
+            $product = Product::find($item['id']);
+            if ($product->stock >= $item['quantity']) {
+                // Mengurangi stok
+                $product->stock -= $item['quantity'];
+                $product->save();
+            } else {
+                return response()->json(['error' => 'Stok tidak cukup untuk produk ' . $product->name], 400);
+            }
+        }
 
+        return response()->json(['success' => true]);
+    }
+    
     public function showHistory(Request $request)
     {
         $startDate = $request->query('start_date');
@@ -195,7 +162,58 @@ class CashierController extends Controller
     return view('cashier.index', compact('dailyEarnings', 'monthlyEarnings', 'yearlyEarnings'));
 }
 
+public function generatePDF(Request $request, $id)
+{
+    // Ambil data transaksi berdasarkan ID
+    $history = CashierHistory::with('user')->find($id);
+    
+    // Pastikan data transaksi ditemukan
+    if (!$history) {
+        return redirect()->route('cashier.history')->with('error', 'Transaksi tidak ditemukan!');
+    }
 
+    // Siapkan data untuk invoice
+    $data = [
+        'invoice_number' => $history->id,  // ID transaksi sebagai nomor invoice
+        'date' => $history->transaction_time->format('Y-m-d'),
+        'customer_name' => $history->customer_name,
+        'customer_contact' => $history->customer_contact ?? 'N/A',
+        'items' => [],  // Kita akan mengisi data items berdasarkan nama produk
+        'total' => $history->total_price,
+    ];
 
+    // Memecah nama produk yang dibeli dan menghitung quantity serta harga
+    $productNames = explode(', ', $history->product_name);
+    $quantities = explode(', ', $history->quantity);
+    $prices = explode(', ', $history->price);
+
+    foreach ($productNames as $index => $productName) {
+        $data['items'][] = [
+            'name' => $productName,
+            'quantity' => $quantities[$index],
+            'price' => $prices[$index],
+        ];
+    }
+
+    // Configure Dompdf options
+    $options = new Options();
+    $options->set('isHtml5ParserEnabled', true);
+    $options->set('isRemoteEnabled', true);
+
+    $dompdf = new Dompdf($options);
+
+    // Render HTML view with the data
+    $html = view('cashier.invoice', compact('data'))->render();
+
+    // Load HTML into Dompdf
+    $dompdf->loadHtml($html);
+
+    // Set paper size and orientation
+    $dompdf->setPaper('A4', 'portrait');
+    $dompdf->render();
+
+    // Stream the generated PDF
+    return $dompdf->stream("Invoice_" . $data['invoice_number'] . ".pdf", ["Attachment" => false]);
+}
 
 }
