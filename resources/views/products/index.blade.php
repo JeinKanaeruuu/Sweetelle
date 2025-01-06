@@ -14,16 +14,19 @@
         <!-- Portfolio Filters -->
         <ul class="portfolio-filters isotope-filters">
           <li data-filter="*" class="filter-active">All</li>
-          <li data-filter=".filter-kue-tumpeng">Kue Tumpeng</li>
-          <li data-filter=".filter-kue-hantaran">Kue Hantaran</li>
-          <li data-filter=".filter-kue-tampah">Kue Tampah Bulat</li>
-          <li data-filter=".filter-kue-nampan">Kue Nampan</li>
-          <li data-filter=".filter-pudding">Pudding</li>
-          <li data-filter=".filter-snack">Snack Box</li>
-          <li data-filter=".filter-jajanan-pasar">Jajanan Pasar</li>
-          <li data-filter=".filter-rujak-rebus">Rujak Buah</li>
-          <li data-filter=".filter-bubur">Bubur</li>
-          <li data-filter=".filter-cake">Cake</li>
+          <li data-filter=".filter-kue-satuan">Kue Satuan</li>
+          <li data-filter=".filter-kue-hantaran">Snak Box</li>
+          <li data-filter=".filter-kue-tampah">Kue Nampan</li>
+          <li data-filter=".filter-kue-nampan">Kue Tampah Bambu</li>
+          <li data-filter=".filter-pudding">Jajan Pasar</li>
+          <li data-filter=".filter-snack">Bubur Traditional</li>
+          <li data-filter=".filter-jajanan-pasar">Tampah Rujak Buah</li>
+          <li data-filter=".filter-rujak-rebus">Tampah Rebusan</li> <br>
+          <li data-filter=".filter-bubur">Tumpeng Tower Kue</li>
+          <li data-filter=".filter-cake">Bolu / Cake</li>
+          <li data-filter=".filter-cake">Kue Kering / Kletikan</li>
+          <li data-filter=".filter-cake">Hantaran Kue</li>
+          <li data-filter=".filter-cake">Hantaran Pernikahan</li>
         </ul><!-- End Portfolio Filters -->
 
         <!-- Portfolio Items -->

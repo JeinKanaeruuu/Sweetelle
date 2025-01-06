@@ -141,9 +141,23 @@
             <!-- Keranjang Belanja -->
             <div class="col-md-4">
                 <h2 class="text-center">Keranjang</h2>
+                
                 <div class="mb-3">
                     <label for="customer-name" class="form-label">Nama Customer (Opsional)</label>
                     <input type="text" class="form-control" id="customer-name" v-model="customerName" placeholder="Masukkan nama customer">
+                </div>
+                <div class="mb-3">
+                    <label for="discount" class="form-label">Diskon (%)</label>
+                    <input type="number" class="form-control" id="discount" v-model="discount" placeholder="Masukkan diskon" min="0" max="100">
+                </div>
+                <div class="mb-3">
+                    <label for="payment-method" class="form-label">Metode Pembayaran</label>
+                    <select class="form-select" id="payment-method" v-model="paymentMethod">
+                        <option value="" disabled>Pilih metode pembayaran</option>
+                        <option v-for="method in paymentMethods" :key="method.id" :value="method.id">
+                            @{{ method.name }}
+                        </option>
+                    </select>
                 </div>
                 <div class="card shadow-sm">
                     <div class="card-body">
@@ -187,15 +201,25 @@
             data() {
                 return {
                     products: @json($products),
+                    paymentMethods: @json($paymentMethods), // Masukkan data paymentMethods
                     cart: {},
                     customerName: '',
+                    paymentMethod: '',
+                    transactionId: '',
+                    discount: 0, // Diskon yang dimasukkan
                 };
             },
             computed: {
-                totalPrice() {
-                    return Object.values(this.cart).reduce((total, item) => total + (item.price * item.quantity), 0);
-                }
-            },
+                            // Perhitungan total harga setelah diskon
+                            totalPrice() {
+                                let total = Object.values(this.cart).reduce((total, item) => total + (item.price * item.quantity), 0);
+                                // Menghitung diskon
+                                if (this.discount > 0) {
+                                    total -= total * (this.discount / 100);
+                                }
+                                return total;
+                            }
+                        },
             methods: {
                 increaseQuantity(product) {
                     if (!this.cart[product.id]) {
@@ -218,33 +242,38 @@
                     delete this.cart[id];
                 },
                 checkout() {
-                    if (Object.keys(this.cart).length === 0) {
-                        alert('Keranjang kosong!');
-                        return;
-                    }
+        if (Object.keys(this.cart).length === 0) {
+            alert('Keranjang kosong!');
+            return;
+        }
 
-                    fetch('{{ route('cashier.checkout') }}', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'X-CSRF-TOKEN': '{{ csrf_token() }}',
-                        },
-                        body: JSON.stringify({
-                            cart: this.cart,
-                            customer_name: this.customerName,
-                        }),
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.success) {
-                            alert('Checkout berhasil!');
-                            this.cart = {}; // Reset keranjang
-                        } else if (data.error) {
-                            alert(data.error);
-                        }
-                    })
-                    .catch(error => console.error('Error:', error));
-                }
+        fetch('{{ route('cashier.checkout') }}', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': '{{ csrf_token() }}',
+            },
+            body: JSON.stringify({
+                cart: this.cart,
+                customer_name: this.customerName,
+                payment_method_id: this.paymentMethod, // Kirim id metode pembayaran
+                discount: this.discount, // Mengirim diskon ke server
+            }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert('Checkout berhasil!');
+                this.cart = {}; // Reset keranjang
+                this.customerName = '';
+                this.transactionId = data.transaction_id; // Menyimpan transaction_id
+                this.discount = 0; // Reset diskon setelah checkout
+            } else if (data.error) {
+                alert(data.error);
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    }
             }
         });
 

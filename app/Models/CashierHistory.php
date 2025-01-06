@@ -15,11 +15,14 @@ class CashierHistory extends Model
     // Tentukan kolom yang dapat diisi (fillable)
     protected $fillable = [
         'user_id',
-        'customer_name',  // Tambahkan kolom customer_name
+        'customer_name',
         'product_name',
         'quantity',
         'total_price',
-        'transaction_time'
+        'transaction_time',
+        'transaction_id',  // Tambahkan kolom transaction_id
+        'discount',  // Tambahkan kolom discount
+        'payment_method_id',
     ];
 
     // Kamu bisa menambahkan waktu transaksi secara otomatis
@@ -33,4 +36,17 @@ class CashierHistory extends Model
     protected $casts = [
         'transaction_time' => 'datetime',
     ];
+
+        public function applyDiscount($discount)
+    {
+        // Menghitung total_price setelah diskon
+        $this->discount = $discount;
+        $this->total_price -= $this->total_price * ($discount / 100);
+    }
+
+    public function paymentMethod()
+{
+    return $this->belongsTo(PaymentMethod::class, 'payment_method_id');
+}
+
 }

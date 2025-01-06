@@ -3,95 +3,72 @@
 @section('content')
     <!-- Portfolio Details Section -->
     <section id="portfolio-details" class="portfolio-details section">
-      {{-- <style>
-        .banner{
-          background-image: url("{{ asset('assets/img/banner.png') }}");
-          background-size: cover;  /* Menutupi seluruh lebar dan tinggi */
-          background-position: center;
-          height: 100px;  /* Menentukan tinggi banner agar lebih pendek */
-          width: 100%;
-          align-items: center;
-          justify-content: center;
-          margin-top: 0;
-          margin-bottom: 20px;
-          margin-left: 0;
-          margin-right: 0;
-        }
-      </style> --}}
       <div class="container" data-aos="fade-up" data-aos-delay="100">
-        
-        <div class="row" style="margin-top: -20px; margin-bottom: 80px;">
+        <div class="row mb-5">
             <div class="d-flex justify-content-between align-items-center">
                 <!-- Tombol Sebelumnya -->
                 @if($previousProduct)
-                <a href="{{ route('product.details', $previousProduct->id) }}" class="btn btn-circle" style="background-color: #496f16; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;">
-                    <i class="bi bi-chevron-left" style="color: #fff;"></i>
+                <a href="{{ route('product.details', $previousProduct->id) }}" class="btn btn-circle shadow" style="background-color: #496f16; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;">
+                    <i class="bi bi-chevron-left" style="color: #fff; font-size: 20px;"></i>
                 </a>
                 @endif
-                <h1>{{ $product->name }}</h1>
+                <h1 class="text-uppercase text-center" style="font-family: 'Raleway', sans-serif; color: #333;">{{ $product->name }}</h1>
                 <!-- Tombol Berikutnya -->
                 @if($nextProduct)
-                <a href="{{ route('product.details', $nextProduct->id) }}" class="btn btn-circle" style="background-color: #496f16; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;">
-                    <i class="bi bi-chevron-right" style="color: #fff;"></i>
+                <a href="{{ route('product.details', $nextProduct->id) }}" class="btn btn-circle shadow" style="background-color: #496f16; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;">
+                    <i class="bi bi-chevron-right" style="color: #fff; font-size: 20px;"></i>
                 </a>
                 @endif
             </div>
-            
         </div>
 
-            <div class="row gy-4">
-
-                <!-- Bagian Gambar Produk -->
-                <div class="col-lg-4">
-                    <div class="align-items-center">
-                        <div class="swiper-slide">
-                          <img src="{{ asset('storage/'.$product->image) }}" alt="{{ $product->name }}" style="width: 350px; height: 480px; border-radius: 0; object-fit:cover">
-                        </div>
-                    </div>
-                </div>                
-
-                <!-- Bagian Informasi Produk -->
-                <div class="col-lg-4">
-                  <h3>Informasi Produk</h3>
-                  <hr>
-                    <div class="portfolio-description" data-aos="fade-up" data-aos-delay="300" style="margin-top: -20px;">
-                      <span class="badge text-light" style="background-color: #FFD700">{{ $product->category }}</span>
-                      <h2>{{ $product->name }}</h2>
-                      <h3 class="my-2">
-                        Rp{{ number_format($product->price, 0, ',', '.') }}
-                      </h3>
-                      <ul style="font-family: raleway">
-                          <li><strong>Sisa Stok</strong>: {{ $product->stock }} pcs</li>
-                          <li><strong>Diskon</strong>: {{ $product->discount_percentage }}%</li>
-                          <li><strong>Minimal Pemesanan</strong>: Tidak ada</li>
-                      </ul>
-                        <p>
-                          {{ $product->description }}
-                        </p>
-                        <a href="{{ route('products.index') }}" class="btn text-white" style="color: #496f16;"> Kembali</a>
-                    </div>
+        <div class="row gy-5">
+            <!-- Bagian Gambar Produk -->
+            <div class="col-lg-6 text-center">
+                <div class="product-image shadow" style="border-radius: 12px; overflow: hidden; width: 450px; height: 600px; margin: 0 auto;">
+                    <img src="{{ asset('storage/'.$product->image) }}" alt="{{ $product->name }}" class="img-fluid" style="object-fit: cover; width: 100%; height: 100%;">
                 </div>
-
-                <div class="col-lg-4">
-                  <div class="portfolio-info text-center" data-aos="fade-up" data-aos-delay="200">
-                    <h3 class="fw-normal">Waktu Beroperasi</h3> 
-                    <div class="row text-center pb-4" style="font-family: raleway;">
-                      <p class="fw-medium">Senin - Sabtu</p>
-                      <p style="color: #496f16">07.00 s/d 16.00 WITA</p>
-                      <p class="fw-medium">Order Minimal H-1</p>
-                    </div>
-                    <h3 class="fw-normal pt-2">Pesan Cepat</h3> 
-                    <div class="row text-center" style="font-family: raleway;">
-                      <p class="fw-medium">WhatsApp</p>
-                      <p style="color: #496f16">07.00 s/d 16.00 WITA</p>
-                      <p class="fw-medium">Order Minimal H-1</p>
-                    </div>
-                  </div>
-                </div>
-
             </div>
 
+            <!-- Bagian Informasi Produk -->
+            <div class="col-lg-4">
+                <h3 class="text-uppercase" style="font-family: 'Raleway', sans-serif; color: #496f16;">Informasi Produk</h3>
+                <hr>
+                <div class="portfolio-description">
+                    <span class="badge text-light" style="background-color: #FFD700; font-size: 14px;">
+                        {{ ucwords(str_replace('-', ' ', $product->category)) }}
+                    </span>
+                    <h2 class="mt-3">{{ $product->name }}</h2>
+                    <h3 class="my-3 text-success fw-bold">
+                        Rp{{ number_format($product->price, 0, ',', '.') }}
+                    </h3>
+                    <ul style="list-style: none; padding: 0; font-family: 'Raleway', sans-serif;">
+                        <li><strong>Sisa Stok:</strong> {{ $product->stock }} pcs</li>
+                        <li><strong>Minimal Pemesanan:</strong> Tidak ada</li>
+                    </ul>
+                    <p class="mt-3" style="color: #555;">{{ $product->description }}</p>
+                    <a href="{{ route('products.index') }}" class="btn btn-success mt-4" style="background-color: #496f16; border: none; font-size: 16px; padding: 10px 20px;">Kembali</a>
+                </div>
+            </div>
+
+            <!-- Bagian Waktu dan Pesan Cepat -->
+            <div class="col-lg-2">
+                <div class="portfolio-info shadow p-4" style="background-color: #f9f9f9; border-radius: 8px;">
+                    <h3 class="text-center text-uppercase" style="font-family: 'Raleway', sans-serif; color: #496f16;">Waktu Beroperasi</h3>
+                    <p class="text-center mt-3" style="font-family: 'Raleway', sans-serif; font-size: 16px;">
+                        <span class="fw-medium">Senin - Sabtu</span><br>
+                        <span style="color: #496f16;">07.00 s/d 16.00 WITA</span>
+                    </p>
+                    <hr>
+                    <h3 class="text-center text-uppercase pt-2" style="font-family: 'Raleway', sans-serif; color: #496f16;">Pesan Cepat</h3>
+                    <p class="text-center mt-3" style="font-family: 'Raleway', sans-serif; font-size: 16px;">
+                        <span class="fw-medium">WhatsApp</span><br>
+                        <span style="color: #496f16;">07.00 s/d 16.00 WITA</span>
+                    </p>
+                </div>
+            </div>
         </div>
 
+      </div>
     </section><!-- /Portfolio Details Section -->
 @endsection

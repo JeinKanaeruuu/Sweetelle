@@ -1,116 +1,183 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Invoice</title>
+    <title>Invoice - {{ $history[0]->transaction_id }}</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9f9f9;
             margin: 0;
             padding: 0;
+            color: #333;
         }
-        .invoice-container {
-            width: 100%;
+
+        .container {
             max-width: 800px;
-            margin: auto;
+            margin: 40px auto;
             padding: 20px;
-            border: 1px solid #ddd;
+            background-color: #fff;
             border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
+
         .header {
             text-align: center;
+            padding-bottom: 10px;
             margin-bottom: 20px;
         }
-        .header h1 {
-            margin: 0;
-            font-size: 24px;
+
+        .header img {
+            max-width: 120px;
+            margin-bottom: 10px;
         }
+
+        .header h1 {
+            font-size: 28px;
+            margin: 0;
+            color: #333;
+        }
+
         .header p {
-            margin: 5px 0;
             font-size: 14px;
             color: #555;
         }
-        .details {
+
+        .invoice-details {
             margin-bottom: 20px;
         }
-        .details .row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
+
+        .invoice-details p {
+            margin: 5px 0;
+            font-size: 16px;
         }
-        .details .row span {
-            font-size: 14px;
-        }
-        .items {
+
+        .invoice-table {
             width: 100%;
             border-collapse: collapse;
             margin-bottom: 20px;
         }
-        .items th, .items td {
-            border: 1px solid #ddd;
+
+        .invoice-table th, .invoice-table td {
             padding: 10px;
             text-align: left;
-            font-size: 14px;
+            border: 1px solid #ddd;
         }
-        .items th {
+
+        .invoice-table th {
             background-color: #f5f5f5;
+            color: #333;
+            text-transform: uppercase;
         }
-        .total {
-            text-align: right;
-            font-size: 16px;
-            font-weight: bold;
+
+        .invoice-table tr:nth-child(odd) {
+            background-color: #f9f9f9;
         }
+
         .footer {
+            margin-top: 30px;
             text-align: center;
             font-size: 12px;
-            color: #555;
+            color: #777;
+        }
+
+        .footer p {
+            margin: 5px 0;
+        }
+
+        .footer .note {
+            font-style: italic;
+            font-size: 13px;
+        }
+
+        .summary {
             margin-top: 20px;
+            text-align: right;
+            font-size: 16px;
+        }
+
+        .summary p {
+            margin: 5px 0;
+        }
+
+        .total-payment {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            margin-top: 20px;
+            text-align: right; /* Menambahkan alignment ke kanan */
+        }
+
+        /* Elegant Styling */
+        .summary p, .total-payment {
+            color: #333;
+            font-weight: normal;
         }
     </style>
 </head>
 <body>
-    <div class="invoice-container">
+    <div class="container">
+        <!-- Header Section -->
         <div class="header">
-            <h1>Sweetelle</h1>
-            <p>Aneka Kue Tradisional dan Modern</p>
+            <img src="logo_url.png" alt="Logo"> <!-- Ganti dengan URL logo -->
+            <h1>INVOICE</h1>
+            <p>Toko Elektronik XYZ</p>
         </div>
-        <div class="details">
-            <div class="row">
-              <span><strong>Invoice:</strong> #{{ $data['invoice_number'] }}</span>
-                <span><strong>Date:</strong> {{ $data['date'] }}</span>
-            </div>
-            <div class="row">
-                <span><strong>Customer:</strong> {{ $data['customer_name'] }}</span>
-                <span><strong>Contact:</strong> {{ $data['customer_contact'] }}</span>
-            </div>
+
+        <!-- Invoice Details Section -->
+        <div class="invoice-details">
+            <p><strong>Nomor Invoice:</strong> {{ $history[0]->transaction_id }}</p>
+            <p><strong>Customer:</strong> {{ $history[0]->customer_name ?? 'Nama tidak tersedia' }}</p>
+            <p><strong>Waktu Transaksi:</strong> {{ $history[0]->transaction_time->format('d-m-Y H:i') }}</p>
         </div>
-        <table class="items">
+
+        <!-- Invoice Table Section -->
+        <table class="invoice-table">
             <thead>
                 <tr>
-                    <th>No</th>
-                    <th>Item</th>
-                    <th>Quantity</th>
-                    <th>Price</th>
-                    <th>Subtotal</th>
+                    <th>Produk</th>
+                    <th>Jumlah</th>
+                    <th>Total Harga</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($data['items'] as $index => $item)
-                <tr>
-                    <td>{{ $index + 1 }}</td>
-                    <td>{{ $item['name'] }}</td>
-                    <td>{{ $item['quantity'] }}</td>
-                    <td>Rp {{ number_format($item['price'], 0, ',', '.') }}</td>
-                    <td>Rp {{ number_format($item['quantity'] * $item['price'], 0, ',', '.') }}</td>
-                </tr>
+                @foreach($history as $item)
+                    @php
+                        $priceBeforeDiscount = $item->total_price / (1 - ($item->discount / 100));
+                    @endphp
+                    <tr>
+                        <td>{{ $item->product_name }}</td>
+                        <td>{{ $item->quantity }}x</td>
+                        <td>Rp {{ number_format($item->total_price, 0, ',', '.') }}</td>
+                    </tr>
                 @endforeach
             </tbody>
         </table>
-        <div class="total">Total: Rp {{ number_format($data['total'], 0, ',', '.') }}</div>
+
+        <p><strong>Kasir:</strong> {{ $history[0]->user->name }}</p>
+        <p><strong>Metode Pembayaran:</strong> {{ $history[0]->paymentMethod->name ?? 'Metode pembayaran tidak tersedia' }}</p>
+
+        <!-- Summary Section -->
+        @if($history[0]->discount > 0)
+            <div class="summary">
+                <p><strong>Total Harga (Sebelum Diskon):</strong> Rp {{ number_format($history->sum(function ($item) {
+                    return $item->total_price / (1 - ($item->discount / 100));
+                }), 0, ',', '.') }}</p>
+                <p><strong>Total Diskon:</strong> {{ number_format($history[0]->discount, 0, ',', '.') }} %</p>
+            </div>
+        @endif
+
+        <!-- Total Pembayaran Section -->
+        <div class="total-payment">
+            <p><strong>Total Pembayaran:</strong> Rp {{ number_format($history->sum('total_price'), 0, ',', '.') }}</p>
+        </div>
+
+        <!-- Footer Section -->
         <div class="footer">
-            <p>Terima kasih atas pesanan Anda!</p>
-            <p>Sweetelle - Aneka Kue untuk Momen Istimewa Anda</p>
+            <p>Terima kasih telah berbelanja di Toko Elektronik XYZ!</p>
+            <p class="note">Invoice ini adalah bukti pembayaran yang sah.</p>
+            <p>Hubungi kami di: support@tokoxyz.com | +62 812 3456 7890</p>
         </div>
     </div>
 </body>

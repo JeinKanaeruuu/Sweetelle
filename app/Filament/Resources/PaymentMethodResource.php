@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\CashierHistoryResource\Pages;
-use App\Filament\Resources\CashierHistoryResource\RelationManagers;
-use App\Models\CashierHistory;
+use App\Filament\Resources\PaymentMethodResource\Pages;
+use App\Filament\Resources\PaymentMethodResource\RelationManagers;
+use App\Models\PaymentMethod;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -13,17 +13,21 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class CashierHistoryResource extends Resource
+class PaymentMethodResource extends Resource
 {
-    protected static ?string $model = CashierHistory::class;
+    protected static ?string $model = PaymentMethod::class;
 
+    protected static ?string $navigationGroup = 'Payment';
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('name')
+                ->label('Metode Pembayaran')
+                ->required()
+                ->maxLength(255),
             ]);
     }
 
@@ -31,10 +35,7 @@ class CashierHistoryResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('transaction_id')
-                ->searchable()
-                ->sortable(),
-                
+                Tables\Columns\TextColumn::make('name')
             ])
             ->filters([
                 //
@@ -59,14 +60,14 @@ class CashierHistoryResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListCashierHistories::route('/'),
-            'create' => Pages\CreateCashierHistory::route('/create'),
-            'edit' => Pages\EditCashierHistory::route('/{record}/edit'),
+            'index' => Pages\ListPaymentMethods::route('/'),
+            'create' => Pages\CreatePaymentMethod::route('/create'),
+            'edit' => Pages\EditPaymentMethod::route('/{record}/edit'),
         ];
     }
 
-    public static function shouldRegisterNavigation(): bool
+    public static function getNavigationBadge(): ?string
     {
-        return false;
+        return static::getModel()::count();
     }
 }

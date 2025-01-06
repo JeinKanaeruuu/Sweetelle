@@ -232,38 +232,49 @@
         
 
 
-        @if($history->isEmpty())
-            <p class="text-center text-muted">Belum ada riwayat transaksi.</p>
-        @else
-            <div class="table-responsive">
-                <table class="table table-bordered">
-                    <thead>
+        @if($groupedHistory->isEmpty())
+        <p class="text-center text-muted">Belum ada riwayat transaksi.</p>
+    @else
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                       
+                        <th>Transaction ID</th>
+                        <th>Nama Kasir</th>
+                        <th>Nama Customer</th>
+                        <th>Produk & Jumlah</th> <!-- Gabungkan Produk dan Jumlah -->
+                        <th>Diskon</th>
+                        <th>Total Harga</th>
+                        <th>Waktu Transaksi</th>
+                        <th>Metode Pembayaran</th>
+                        <th>Download Invoice</th> <!-- Kolom baru -->
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($groupedHistory as $index => $item)
                         <tr>
-                            <th>No</th>
-                            <th>Nama Kasir</th>
-                            <th>Nama Customer</th>
-                            <th>Produk</th>
-                            <th>Jumlah</th>
-                            <th>Total Harga</th>
-                            <th>Waktu Transaksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($history as $index => $item)
-                        <tr>
-                            <td>{{ $index + 1 }}</td>
-                            <td>{{ $item->user->name }}</td>
+                            
+                            <td>{{ $item->transaction_id }}</td>
+                            <td>{{ $item->user_name }}</td>
                             <td>{{ $item->customer_name ?? 'Nama tidak tersedia' }}</td>
-                            <td>{{ $item->product_name }}</td>
-                            <td>{{ $item->quantity }}</td>
+                            <td>{{ $item->product_details }}</td> <!-- Gabungkan Produk dan Jumlah -->
+                            <td> {{ number_format($item->discount, 0, ',', '.') }} %</td>
                             <td>Rp {{ number_format($item->total_price, 0, ',', '.') }}</td>
                             <td>{{ $item->transaction_time->format('d-m-Y H:i') }}</td>
+                            <td>{{ $item->payment_method }}</td>
+                            <td>
+                                <a href="{{ route('cashier.downloadInvoice', $item->transaction_id) }}" class="btn btn-primary btn-sm">
+                                    Download Invoice
+                                </a>
+                            </td>
                         </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
-        @endif
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    @endif
+    
     </div>
 </body>
 
