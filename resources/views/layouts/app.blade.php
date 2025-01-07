@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Index - Presento Bootstrap Template</title>
+  <title>Sweetelle</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
@@ -135,7 +135,7 @@
       </footer>
     
       <!-- Scroll Top -->
-      <a href="https://wa.me/1234567890" target="_blank" class="whatsapp-fixed d-flex align-items-center justify-content-center" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Kontak WhatsApp Kami">
+      <a href="https://wa.me/6281148802508" target="_blank" class="whatsapp-fixed d-flex align-items-center justify-content-center" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Kontak WhatsApp Kami">
         <i class="bi bi-whatsapp"></i></a>
       <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
     

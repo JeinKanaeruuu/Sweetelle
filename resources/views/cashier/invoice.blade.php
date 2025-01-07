@@ -106,13 +106,13 @@
             font-weight: bold;
             color: #333;
             margin-top: 20px;
-            text-align: right; /* Menambahkan alignment ke kanan */
+            text-align: right;
         }
 
-        /* Elegant Styling */
-        .summary p, .total-payment {
-            color: #333;
-            font-weight: normal;
+        .highlight {
+            font-size: 18px;
+            font-weight: bold;
+            color: #555;
         }
     </style>
 </head>
@@ -145,11 +145,12 @@
                 @foreach($history as $item)
                     @php
                         $priceBeforeDiscount = $item->total_price / (1 - ($item->discount / 100));
+                        $unitPrice = $priceBeforeDiscount / $item->quantity;
                     @endphp
                     <tr>
                         <td>{{ $item->product_name }}</td>
                         <td>{{ $item->quantity }}x</td>
-                        <td>Rp {{ number_format($item->total_price, 0, ',', '.') }}</td>
+                        <td>Rp {{ number_format($unitPrice * $item->quantity, 0, ',', '.') }}</td>
                     </tr>
                 @endforeach
             </tbody>
@@ -159,18 +160,16 @@
         <p><strong>Metode Pembayaran:</strong> {{ $history[0]->paymentMethod->name ?? 'Metode pembayaran tidak tersedia' }}</p>
 
         <!-- Summary Section -->
-        @if($history[0]->discount > 0)
-            <div class="summary">
-                <p><strong>Total Harga (Sebelum Diskon):</strong> Rp {{ number_format($history->sum(function ($item) {
-                    return $item->total_price / (1 - ($item->discount / 100));
-                }), 0, ',', '.') }}</p>
-                <p><strong>Total Diskon:</strong> {{ number_format($history[0]->discount, 0, ',', '.') }} %</p>
-            </div>
-        @endif
+        <div class="summary">
+            <p class="highlight">Total Harga (Sebelum Diskon): Rp {{ number_format($history->sum(function ($item) {
+                return $item->total_price / (1 - ($item->discount / 100));
+            }), 0, ',', '.') }}</p>
+            <p class="highlight">Total Diskon: {{ number_format($history[0]->discount, 0, ',', '.') }} %</p>
+        </div>
 
         <!-- Total Pembayaran Section -->
         <div class="total-payment">
-            <p><strong>Total Pembayaran:</strong> Rp {{ number_format($history->sum('total_price'), 0, ',', '.') }}</p>
+            <p>Total Pembayaran: Rp {{ number_format($history->sum('total_price'), 0, ',', '.') }}</p>
         </div>
 
         <!-- Footer Section -->

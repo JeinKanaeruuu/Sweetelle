@@ -39,16 +39,19 @@ public static function form(Form $form): Form
                 Forms\Components\Select::make('category')
                     
                     ->options([
-                        'kue-traditional' => 'Kue Traditional',
-                        'kue-gurih' => 'Kue Gurih',
-                        'kue-modern' => 'Kue Modern',
+                        'kue-satuan' => 'Kue Satuan',
                         'snack-box' => 'Snack Box',
                         'kue-nampan' => 'Kue Nampan',
-                        'kue-tampah' => 'Kue Tampah',
+                        'kue-tampah-bambu' => 'Kue Tampah Bambu',
                         'jajan-pasar' => 'Jajan Pasar',
-                        'rujak' => 'Rujak Buah dan Rebusan',
-                        'bubur' => 'Bubur Manis Traditional',
-                        'tumpeng-tower' => 'Tumpeng Tower',
+                        'bubur-traditional' => 'Bubur Traditional',
+                        'tampah-rujak-buah' => 'Tampah Rujak Buah',
+                        'tampah-rebusan' => 'Tampah Rebusan',
+                        'tumpeng-tower-kue' => 'Tumpeng Tower Kue',
+                        'bolu-cake' => 'Bolu / Cake',
+                        'kue-kering' => 'Kue Kering / Kletikan',
+                        'hantaran-kue' => 'Hantaran Kue',
+                        'hantaran-pernikahan' => 'Hantaran Pernikahan',
                     ])
                     ->required(),
             Forms\Components\FileUpload::make('image')
@@ -88,16 +91,19 @@ public static function form(Form $form): Form
                     ->searchable()
                     ->sortable()
                     ->formatStateUsing(fn($state) => match ($state) {
-                        'kue-traditional' => 'Kue Traditional',
-                        'kue-gurih' => 'Kue Gurih',
-                        'kue-modern' => 'Kue Modern',
+                        'kue-satuan' => 'Kue Satuan',
                         'snack-box' => 'Snack Box',
                         'kue-nampan' => 'Kue Nampan',
-                        'kue-tampah' => 'Kue Tampah',
+                        'kue-tampah-bambu' => 'Kue Tampah Bambu',
                         'jajan-pasar' => 'Jajan Pasar',
-                        'rujak' => 'Rujak Buah dan Rebusan',
-                        'bubur' => 'Bubur Manis Traditional',
-                        'tumpeng-tower' => 'Tumpeng Tower',
+                        'bubur-traditional' => 'Bubur Traditional',
+                        'tampah-rujak-buah' => 'Tampah Rujak Buah',
+                        'tampah-rebusan' => 'Tampah Rebusan',
+                        'tumpeng-tower-kue' => 'Tumpeng Tower Kue',
+                        'bolu-cake' => 'Bolu / Cake',
+                        'kue-kering' => 'Kue Kering / Kletikan',
+                        'hantaran-kue' => 'Hantaran Kue',
+                        'hantaran-pernikahan' => 'Hantaran Pernikahan',
                         default => Str::title(str_replace('-', ' ', $state)), // Default case
                     }),
                     Tables\Columns\ImageColumn::make('image')

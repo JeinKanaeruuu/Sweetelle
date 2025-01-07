@@ -52,22 +52,27 @@
             </div>
 
             <!-- Bagian Waktu dan Pesan Cepat -->
-            <div class="col-lg-2">
-                <div class="portfolio-info shadow p-4" style="background-color: #f9f9f9; border-radius: 8px;">
-                    <h3 class="text-center text-uppercase" style="font-family: 'Raleway', sans-serif; color: #496f16;">Waktu Beroperasi</h3>
-                    <p class="text-center mt-3" style="font-family: 'Raleway', sans-serif; font-size: 16px;">
-                        <span class="fw-medium">Senin - Sabtu</span><br>
-                        <span style="color: #496f16;">07.00 s/d 16.00 WITA</span>
-                    </p>
-                    <hr>
-                    <h3 class="text-center text-uppercase pt-2" style="font-family: 'Raleway', sans-serif; color: #496f16;">Pesan Cepat</h3>
-                    <p class="text-center mt-3" style="font-family: 'Raleway', sans-serif; font-size: 16px;">
-                        <span class="fw-medium">WhatsApp</span><br>
-                        <span style="color: #496f16;">07.00 s/d 16.00 WITA</span>
-                    </p>
-                </div>
-            </div>
+<!-- Bagian Waktu dan Pesan Cepat -->
+<div class="col-lg-2">
+    <div class="portfolio-info shadow p-4" style="background-color: #f9f9f9; border-radius: 8px;">
+        <h3 class="text-center text-uppercase" style="font-family: 'Raleway', sans-serif; color: #496f16;">Waktu Beroperasi</h3>
+        <p class="text-center mt-3" style="font-family: 'Raleway', sans-serif; font-size: 16px;">
+            <span class="fw-medium">Senin - Sabtu</span><br>
+            <span style="color: #496f16;">07.00 s/d 16.00 WITA</span>
+        </p>
+        <hr>
+        <h3 class="text-center text-uppercase pt-2" style="font-family: 'Raleway', sans-serif; color: #496f16;">Pesan Cepat</h3>
+        <div class="row my-4 mx-4">
+            <a href="https://wa.me/6281148802508" target="_blank" style="text-decoration: none; display: block;">
+                <button id="contactbtn" style="width: 100%; padding: 10px; font-size: 16px; background-color: #25D366; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                    <i class="bi bi-whatsapp"></i> 
+                </button>
+            </a>
         </div>
+    </div>
+</div>
+
+
 
       </div>
     </section><!-- /Portfolio Details Section -->

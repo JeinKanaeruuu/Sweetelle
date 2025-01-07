@@ -13,7 +13,7 @@
     <div class="container" data-aos="fade-up" data-aos-delay="100">
 
       <div class="row mb-4">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15956.046298445113!2d116.85806319702948!3d-1.1522234946112935!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2df149298f826ab5%3A0x8489d5309f45c0db!2sKalimantan%20Institute%20of%20Technology!5e0!3m2!1sen!2sid!4v1735925733735!5m2!1sen!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3988.9225002136295!2d116.84315457496542!3d-1.214170298774243!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMcKwMTInNTEuMCJTIDExNsKwNTAnNDQuNiJF!5e0!3m2!1sen!2sid!4v1736225549112!5m2!1sen!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div><!-- End Contact Form -->
 
       <div class="row my-4">
@@ -49,9 +49,12 @@
           <h3 class="mb-4">Kontak Kami Sekarang</h3>
         </div>
         <div class="row my-4 mx-4">
-          <button id="contactbtn" ><i class="bi bi-whatsapp"></i> WhatsApp</button>
+          <a href="https://wa.me/6281148802508" target="_blank" style="text-decoration: none;">
+            <button id="contactbtn">
+              <i class="bi bi-whatsapp"></i> WhatsApp
+            </button>
+          </a>
         </div>
-        <div class="row my-4 mx-4">
         <button id="contactbtn"><i class="bi bi-instagram"></i> Instagram</button>
         </div>
       </div>
