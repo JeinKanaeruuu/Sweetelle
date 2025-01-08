@@ -10,10 +10,5 @@ class ListCashierHistories extends ListRecords
 {
     protected static string $resource = CashierHistoryResource::class;
 
-    protected function getHeaderActions(): array
-    {
-        return [
-            Actions\CreateAction::make(),
-        ];
-    }
+
 }

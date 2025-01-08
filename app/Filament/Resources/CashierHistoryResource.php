@@ -16,8 +16,9 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class CashierHistoryResource extends Resource
 {
     protected static ?string $model = CashierHistory::class;
+    protected static ?string $navigationGroup = 'Payment & History';
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-c-archive-box-arrow-down';
 
     public static function form(Form $form): Form
     {
@@ -34,13 +35,16 @@ class CashierHistoryResource extends Resource
                 Tables\Columns\TextColumn::make('transaction_id')
                 ->searchable()
                 ->sortable(),
+                Tables\Columns\TextColumn::make('transaction_time')
+                ->searchable()
+                ->sortable(),
                 
             ])
             ->filters([
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -67,6 +71,6 @@ class CashierHistoryResource extends Resource
 
     public static function shouldRegisterNavigation(): bool
     {
-        return false;
+        return true;
     }
 }
