@@ -120,9 +120,10 @@
     <div class="container">
         <!-- Header Section -->
         <div class="header">
-            <img src="logo_url.png" alt="Logo"> <!-- Ganti dengan URL logo -->
+            <img src="{{ asset('assets/img/sweetelle-logo.jpg') }}" alt="Logo"> <!-- Ganti dengan URL logo -->
             <h1>INVOICE</h1>
-            <p>Toko Elektronik XYZ</p>
+            <p><span style="font-family: 'railey';">
+                Sweetelle</span> Cake</p>
         </div>
 
         <!-- Invoice Details Section -->
@@ -176,7 +177,7 @@
         <div class="footer">
             <p>Terima kasih telah berbelanja di Toko Elektronik XYZ!</p>
             <p class="note">Invoice ini adalah bukti pembayaran yang sah.</p>
-            <p>Hubungi kami di: support@tokoxyz.com | +62 812 3456 7890</p>
+            <p>Hubungi kami di IG: @sweetelle_bakehouse | WA: +62 812 3456 7890</p>
         </div>
     </div>
 </body>

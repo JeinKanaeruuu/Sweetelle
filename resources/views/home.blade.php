@@ -159,7 +159,7 @@
                 <img src="assets/img/portfolio/tumpeng_kue.png" style="width: 100%; height: 500px; object-fit: cover;" alt="">
                 <div class="portfolio-info">
                   <h4 class="text-dark">Best Seller</h4>
-                  <a href="{{ route('products.index') }}" title="More Details" class="porto-link"><span class="fs-1 fw-light">Kue Tumpeng</span><i class="bi bi-chevron-double-right"></i></a>
+                  <a href="{{ route('products.index') }}" title="More Details" class="porto-link"><span class="fs-1 fw-light">Tumpeng Tower Kue</span><i class="bi bi-chevron-double-right"></i></a>
                 </div>
               </div>
             </div>
@@ -173,7 +173,7 @@
               <div class="portfolio-content h-100">
                 <img src="assets/img/portfolio/kue_hantaran.png" style="width: 100%; height: 500px; object-fit: cover;" alt="">
                 <div class="portfolio-info">
-                  <a href="{{ route('products.index') }}" title="More Details" class="porto-link"><span class="fs-1 fw-light">Kue Hantaran</span><i class="bi bi-chevron-double-right"></i></a>
+                  <a href="{{ route('products.index') }}" title="More Details" class="porto-link"><span class="fs-1 fw-light">Hantaran Pernikahan</span><i class="bi bi-chevron-double-right"></i></a>
                 </div>
               </div>
             </div>
@@ -187,7 +187,7 @@
               <div class="portfolio-content h-100">
                 <img src="assets/img/portfolio/kue_tampah_bulat.png" style="width: 100%; height: 500px; object-fit: cover;" alt="">
                 <div class="portfolio-info">
-                  <a href="{{ route('products.index') }}" title="More Details" class="porto-link"><span class="fs-1 fw-light">Kue Tampah Bulat</span><i class="bi bi-chevron-double-right"></i></a>
+                  <a href="{{ route('products.index') }}" title="More Details" class="porto-link"><span class="fs-1 fw-light">Kue Tampah Bambu</span><i class="bi bi-chevron-double-right"></i></a>
                 </div>
               </div>
             </div>
@@ -208,13 +208,104 @@
           </div>
         </div>
       
-        <div class="row hidden-rows" style="display: none;">
+        <div class="row hidden-rows mb-4" style="display: none;">
           <div class="col portfolio-item isotope-item filter-app">
             <div class="portfolio-content h-100">
-              <img src="assets/img/portfolio/kue_tampah_bulat.png" style="width: 100%; height: 500px; object-fit: cover;" alt="">
+              <img src="assets/img/portfolio/risoles.jpg" style="width: 100%; height: 500px; object-fit: cover;" alt="">
               <div class="portfolio-info">
                 <a href="{{ route('products.index') }}" title="More Details" class="porto-link">
-                  <span class="fs-1 fw-light">Kue Tampah Bulat</span>
+                  <span class="fs-1 fw-light">Kue Satuan</span>
+                  <i class="bi bi-chevron-double-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row hidden-rows mb-4" style="display: none;">
+          <div class="col portfolio-item isotope-item filter-app">
+            <div class="portfolio-content h-100">
+              <img src="assets/img/portfolio/cake.png" style="width: 100%; height: 500px; object-fit: cover;" alt="">
+              <div class="portfolio-info">
+                <a href="{{ route('products.index') }}" title="More Details" class="porto-link">
+                  <span class="fs-1 fw-light">Bolu/Cake</span>
+                  <i class="bi bi-chevron-double-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row hidden-rows mb-4" style="display: none;">
+          <div class="col portfolio-item isotope-item filter-app">
+            <div class="portfolio-content h-100">
+              <img src="assets/img/portfolio/snack_box.jpg" style="width: 100%; height: 500px; object-fit: cover;" alt="">
+              <div class="portfolio-info">
+                <a href="{{ route('products.index') }}" title="More Details" class="porto-link">
+                  <span class="fs-1 fw-light">Snack Box</span>
+                  <i class="bi bi-chevron-double-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row hidden-rows mb-4" style="display: none;">
+          <div class="col portfolio-item isotope-item filter-app">
+            <div class="portfolio-content h-100">
+              <img src="assets/img/portfolio/jajanan-pasar.png" style="width: 100%; height: 500px; object-fit: cover;" alt="">
+              <div class="portfolio-info">
+                <a href="{{ route('products.index') }}" title="More Details" class="porto-link">
+                  <span class="fs-1 fw-light">Jajan Pasar</span>
+                  <i class="bi bi-chevron-double-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row hidden-rows mb-4" style="display: none;">
+          <div class="col portfolio-item isotope-item filter-app">
+            <div class="portfolio-content h-100">
+              <img src="assets/img/portfolio/bubur.png" style="width: 100%; height: 500px; object-fit: cover;" alt="">
+              <div class="portfolio-info">
+                <a href="{{ route('products.index') }}" title="More Details" class="porto-link">
+                  <span class="fs-1 fw-light">Bubur Tradisional</span>
+                  <i class="bi bi-chevron-double-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row hidden-rows mb-4" style="display: none;">
+          <div class="col portfolio-item isotope-item filter-app">
+            <div class="portfolio-content h-100">
+              <img src="assets/img/portfolio/rujak.jpg" style="width: 100%; height: 500px; object-fit: cover;" alt="">
+              <div class="portfolio-info">
+                <a href="{{ route('products.index') }}" title="More Details" class="porto-link">
+                  <span class="fs-1 fw-light">Tampah Rujak Buah</span>
+                  <i class="bi bi-chevron-double-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row hidden-rows mb-4" style="display: none;">
+          <div class="col portfolio-item isotope-item filter-app">
+            <div class="portfolio-content h-100">
+              <img src="assets/img/portfolio/rebus.png" style="width: 100%; height: 500px; object-fit: cover;" alt="">
+              <div class="portfolio-info">
+                <a href="{{ route('products.index') }}" title="More Details" class="porto-link">
+                  <span class="fs-1 fw-light">Tampah Rebusan</span>
+                  <i class="bi bi-chevron-double-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row hidden-rows mb-4" style="display: none;">
+          <div class="col portfolio-item isotope-item filter-app">
+            <div class="portfolio-content h-100">
+              <img src="assets/img/portfolio/hantaran kue.jpg" style="width: 100%; height: 500px; object-fit: cover;" alt="">
+              <div class="portfolio-info">
+                <a href="{{ route('products.index') }}" title="More Details" class="porto-link">
+                  <span class="fs-1 fw-light">Hantaran Kue</span>
                   <i class="bi bi-chevron-double-right"></i>
                 </a>
               </div>
