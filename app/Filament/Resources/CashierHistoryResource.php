@@ -35,6 +35,9 @@ class CashierHistoryResource extends Resource
                 Tables\Columns\TextColumn::make('transaction_id')
                 ->searchable()
                 ->sortable(),
+                Tables\Columns\TextColumn::make('customer_name')
+                ->searchable()
+                ->sortable(),
                 Tables\Columns\TextColumn::make('transaction_time')
                 ->searchable()
                 ->sortable(),
@@ -65,7 +68,7 @@ class CashierHistoryResource extends Resource
         return [
             'index' => Pages\ListCashierHistories::route('/'),
             'create' => Pages\CreateCashierHistory::route('/create'),
-            'edit' => Pages\EditCashierHistory::route('/{record}/edit'),
+            
         ];
     }
 
