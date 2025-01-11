@@ -53,12 +53,10 @@
           <li><a href="{{ url('/#portfolio') }}" class="{{ Request::is('*#portfolio*') ? 'active' : '' }}">Portfolio</a></li>
           <li><a href="{{ route('about') }}" class="{{ Request::is('about') ? 'active' : '' }}">Tentang</a></li>
           <li><a href="{{ route('products.index') }}" class="{{ Request::is('products*') ? 'active' : '' }}">Produk</a></li>          
+          <li><a href="{{ route('contact') }}" class="{{ Request::is('contact*') ? 'active' : '' }}">Hubungi Kami</a></li>          
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
-
-      <a class="btn-getstarted" href="{{ route('contact') }}">Hubungi Kami</a>
-
     </div>
   </header>
 
@@ -76,16 +74,14 @@
                   Sweetelle</span>
               </a>
               <div class="footer-contact pt-3">
-                <p>Jl.Contoh RT.</p>
-                <p>Balikpapan, Kalimantan Timur 535022</p>
+                <p>JL. LKMD Batu Ampar, Balikpapan Utara</p>
+                <p>Balikpapan, Kalimantan Timur 76136</p>
                 <p class="mt-3"><strong>Phone:</strong> <span>+62 811-4880-2508</span></p>
                 <p><strong>Email:</strong> <span>sweetelle@gmail.com</span></p>
               </div>
               <div class="social-links d-flex mt-4">
-                <a href=""><i class="bi bi-twitter-x"></i></a>
-                <a href=""><i class="bi bi-facebook"></i></a>
-                <a href=""><i class="bi bi-instagram"></i></a>
-                <a href=""><i class="bi bi-linkedin"></i></a>
+                <a href="https://wa.me/6281148802508"><i class="bi bi-whatsapp"></i></a>
+                <a href="https://www.instagram.com/sweetelle_bakehouse/"><i class="bi bi-instagram"></i></a>
               </div>
             </div>
     
@@ -105,20 +101,23 @@
               <div class="row my-2">
                 <div class="col">
                   <ul>
-                    <li><a href="{{ route('products.index') }}">Kue Tumpeng</a></li>
-                    <li><a href="{{ route('products.index') }}">Kue Hantaran</a></li>
-                    <li><a href="{{ route('products.index') }}">Kue Tampah Bulat</a></li>
+                    <li><a href="{{ route('products.index') }}">Kue Satuan</a></li>
+                    <li><a href="{{ route('products.index') }}">Snack Box</a></li>
                     <li><a href="{{ route('products.index') }}">Kue Nampan</a></li>
-                    <li><a href="{{ route('products.index') }}">Pudding</a></li>
+                    <li><a href="{{ route('products.index') }}">Kue Tampah Bambu</a></li>
+                    <li><a href="{{ route('products.index') }}">Jajan Pasar</a></li>
+                    <li><a href="{{ route('products.index') }}">Bubur Tradisional</a></li>
                   </ul>
                 </div>
                 <div class="col">
                   <ul>
-                    <li><a href="{{ route('products.index') }}">Snack Box</a></li>
-                    <li><a href="{{ route('products.index') }}">Jajanan Pasar</a></li>
-                    <li><a href="{{ route('products.index') }}">Rujak Buah</a></li>
-                    <li><a href="{{ route('products.index') }}">Bubur</a></li>
-                    <li><a href="{{ route('products.index') }}">Cake</a></li>
+                    <li><a href="{{ route('products.index') }}">Tampah Rujak Buah</a></li>
+                    <li><a href="{{ route('products.index') }}">Tampah Rebusan</a></li>
+                    <li><a href="{{ route('products.index') }}">Tumpeng Tower Kue</a></li>
+                    <li><a href="{{ route('products.index') }}">Kue Kering/Kletikan</a></li>
+                    <li><a href="{{ route('products.index') }}">Hantaran Kue</a></li>
+                    <li><a href="{{ route('products.index') }}">Hantaran Pernikahan</a></li>
+                    <li><a href="{{ route('products.index') }}">Bolu/Cake</a></li>
                   </ul>    
                 </div>
             </div>
